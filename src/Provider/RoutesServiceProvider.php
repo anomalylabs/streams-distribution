@@ -2,6 +2,8 @@
 
 class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
+    protected $middleware = [];
+    
     /**
      * Filter before routing.
      */
