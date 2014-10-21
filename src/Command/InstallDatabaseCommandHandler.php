@@ -21,7 +21,7 @@ class InstallDatabaseCommandHandler
         $this->installApplicationsTable();
         $this->installApplicationsDomainsTable();
 
-        $this->installApplication();
+        $this->installDefaultApplication();
 
         $this->setPrefix('default_');
     }
@@ -61,8 +61,9 @@ class InstallDatabaseCommandHandler
         );
     }
 
-    protected function installApplication()
+    protected function installDefaultApplication()
     {
+        // TODO: Get this from request input.
         $data = [
             'name'       => 'Default',
             'reference'  => 'defualt',

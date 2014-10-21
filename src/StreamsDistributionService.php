@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Anomaly\Streams\Platform\Traits\CommandableTrait;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallDatabaseCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand;
@@ -23,6 +25,7 @@ class StreamsDistributionService
         $this->generateDatabaseFile();
 
         $this->installDatabase();
+        $this->installStreams();
         $this->installModules();
 
         $this->installAdministrator();
@@ -63,11 +66,18 @@ class StreamsDistributionService
         $this->execute($command);
     }
 
+    protected function installStreams()
+    {
+        $command = new InstallStreamsCommand();
+
+        $this->execute($command);
+    }
+
     protected function installModules()
     {
-        /*$command = new InstallModulesCommand();
+        $command = new InstallModulesCommand();
 
-        $this->execute($command);*/
+        $this->execute($command);
     }
 
     protected function installAdministrator()
