@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Distribution\Base;
+<?php namespace Anomaly\Streams\Distribution\Streams;
 
 use Illuminate\Http\Request;
 use Anomaly\Streams\Distribution\Streams\Command\WriteAppFileCommand;
