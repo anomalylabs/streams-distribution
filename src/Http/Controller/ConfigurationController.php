@@ -1,6 +1,6 @@
-<?php namespace Streams\Addon\Distribution\Streams\Http\Controller;
+<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Http\Controller;
 
-use Streams\Platform\Http\Controller\PublicController;
+use Anomaly\Streams\Platform\Http\Controller\PublicController;
 
 class ConfigurationController extends PublicController
 {

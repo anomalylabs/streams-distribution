@@ -1,4 +1,4 @@
-<?php namespace Streams\Addon\Distribution\Streams\Command;
+<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
 
 use Illuminate\Database\Schema\Blueprint;
 

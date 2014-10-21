@@ -1,6 +1,6 @@
-<?php namespace Streams\Addon\Distribution\Streams\Command;
+<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
 
-use Streams\Platform\Addon\Module\ModuleService;
+use Anomaly\Streams\Platform\Addon\Module\ModuleService;
 
 class InstallModulesCommandHandler
 {
