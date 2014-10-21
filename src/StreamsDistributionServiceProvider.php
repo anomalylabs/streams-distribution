@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Distribution\Streams;
+<?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
 use Illuminate\Support\ServiceProvider;
 
