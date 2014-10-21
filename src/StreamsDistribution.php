@@ -4,7 +4,7 @@ use Anomaly\Streams\Platform\Addon\Distribution\DistributionAddon;
 
 class StreamsDistribution extends DistributionAddon
 {
-    protected $slug = 'base';
+    protected $slug = 'streams';
 
     public function getAdminTheme()
     {

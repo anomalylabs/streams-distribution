@@ -1,6 +1,6 @@
 <?php
 
 return array(
-    'name'        => 'Base',
-    'description' => 'The base distribution.'
+    'name'        => 'Streams',
+    'description' => 'The streams distribution.'
 );

@@ -4,97 +4,107 @@
 
 {{ section "content" }}
 
-<form method="post" action="{{ url.to "installer/install" }}">
+<form method="post" action="{{ url.to " installer/install" }}">
 
-    <div class="panel panel-default">
+<div class="panel panel-default">
 
-        <div class="panel-heading">
-            <h3 class="panel-title">Database</h3>
-        </div>
-
-        <div class="panel-body">
-
-            <div class="form-group">
-                <label>Driver</label>
-                <small class="help-block">What database driver would you like to use?</small>
-                <select name="database[driver]" class="form-control">
-                    <option value="mysql">MySQL</option>
-                    <option value="postgres">Postgres</option>
-                    <option value="sqlite">SQLite</option>
-                    <option value="sql_server">SQL Server</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Host</label>
-                <small class="help-block">What is the hostname for your database?</small>
-                <input type="text" name="database[host]" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label>Database</label>
-                <small class="help-block">What is the name of your database?</small>
-                <input type="text" name="database[database]" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label>User</label>
-                <small class="help-block">What is the username for your database?</small>
-                <input type="text" name="database[user]" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label>Password</label>
-                <small class="help-block">What is the password for your database user?</small>
-                <input type="password" name="database[password]" class="form-control">
-            </div>
-
-        </div>
+    <div class="panel-heading">
+        <h3 class="panel-title">Database</h3>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel-body">
 
-        <div class="panel-heading">
-            <h3 class="panel-title">Administrator</h3>
+        <div class="form-group">
+            <label>Driver</label>
+            <small class="help-block">What database driver would you like to use?</small>
+            <select name="database[driver]" class="form-control">
+                <option value="mysql">MySQL</option>
+                <option value="postgres">Postgres</option>
+                <option value="sqlite">SQLite</option>
+                <option value="sqlsrv">SQL Server</option>
+            </select>
         </div>
 
-        <div class="panel-body">
-
-            <div class="form-group">
-                <label>Username</label>
-                <small class="help-block">What is the administrators username?</small>
-                <input type="text" name="administrator[username]" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <small class="help-block">What is the administrators email?</small>
-                <input type="text" name="administrator[email]" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label>Password</label>
-                <small class="help-block">What is the administrators password?</small>
-                <input type="password" name="administrator[password]" class="form-control">
-            </div>
-
+        <div class="form-group">
+            <label>Host</label>
+            <small class="help-block">What is the hostname for your database?</small>
+            <input type="text" name="database[host]" value="localhost" class="form-control">
         </div>
+
+        <div class="form-group">
+            <label>Database</label>
+            <small class="help-block">What is the name of your database?</small>
+            <input type="text" name="database[database]" value="steam" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>User</label>
+            <small class="help-block">What is the username for your database?</small>
+            <input type="text" name="database[user]" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <small class="help-block">What is the password for your database user?</small>
+            <input type="password" name="database[password]" class="form-control">
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Administrator</h3>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel-body">
 
-        <div class="panel-heading">
-            <h3 class="panel-title">Options</h3>
+        <div class="form-group">
+            <label>Username</label>
+            <small class="help-block">What is the administrators username?</small>
+            <input type="text" name="administrator[username]" value="admin" class="form-control">
         </div>
 
-        <div class="panel-body">
-
-            Set some custom options here.
-
+        <div class="form-group">
+            <label>Email</label>
+            <small class="help-block">What is the administrators email?</small>
+            <input type="text" name="administrator[email]" class="form-control">
         </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <small class="help-block">What is the administrators password?</small>
+            <input type="password" name="administrator[password]" class="form-control">
+        </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Options</h3>
     </div>
 
-    <button type="submit" class="btn btn-lg btn-block btn-success">{{ lang.trans "button.install" }}</button>
+    <div class="panel-body">
+
+        <div class="form-group">
+            <label>Application Name</label>
+            <small class="help-block">What is the name of your application?</small>
+            <input type="text" name="application[name]" value="Default App" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Application Reference</label>
+            <small class="help-block">What is the reference slug of your application?</small>
+            <input type="text" name="application[reference]" value="defualt" class="form-control">
+        </div>
+
+    </div>
+</div>
+
+<button type="submit" class="btn btn-lg btn-block btn-success">{{ lang.trans "button.install" }}</button>
 
 </form>
 

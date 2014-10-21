@@ -10,6 +10,6 @@ class StreamsDistributionServiceProvider extends ServiceProvider
     public function register()
     {
         // Register routes.
-        $this->app->register('Streams\Addon\Distribution\Base\Provider\RoutesServiceProvider');
+        $this->app->register('Streams\Addon\Distribution\Streams\Provider\RoutesServiceProvider');
     }
 }
