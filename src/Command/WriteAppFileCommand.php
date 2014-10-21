@@ -1,4 +1,4 @@
-<?php namespace Streams\Addon\Distribution\Base\Command;
+<?php namespace Anomaly\Streams\Distribution\Base\Command;
 
 class WriteAppFileCommand
 {

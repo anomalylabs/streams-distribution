@@ -1,4 +1,4 @@
-<?php namespace Streams\Addon\Distribution\Base\Provider;
+<?php namespace Anomaly\Streams\Distribution\Base\Provider;
 
 class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {

@@ -1,6 +1,6 @@
-<?php namespace Streams\Addon\Distribution\Base\Command;
+<?php namespace Anomaly\Streams\Distribution\Base\Command;
 
-use Streams\Platform\Generator\ConfigAppGenerator;
+use Anomaly\Streams\Platform\Generator\ConfigAppGenerator;
 
 class WriteAppFileCommandHandler
 {

@@ -1,8 +1,8 @@
-<?php namespace Streams\Addon\Distribution\Base;
+<?php namespace Anomaly\Streams\Distribution\Base;
 
 use Illuminate\Http\Request;
-use Streams\Addon\Distribution\Base\Command\WriteAppFileCommand;
-use Streams\Platform\Traits\CommandableTrait;
+use Anomaly\Streams\Distribution\Base\Command\WriteAppFileCommand;
+use Anomaly\Streams\Platform\Traits\CommandableTrait;
 
 class BaseDistributionService
 {

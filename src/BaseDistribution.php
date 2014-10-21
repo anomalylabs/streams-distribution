@@ -1,6 +1,6 @@
-<?php namespace Streams\Addon\Distribution\Base;
+<?php namespace Anomaly\Streams\Distribution\Base;
 
-use Streams\Platform\Addon\Distribution\DistributionAddon;
+use Anomaly\Streams\Platform\Addon\Distribution\DistributionAddon;
 
 class BaseDistribution extends DistributionAddon
 {
