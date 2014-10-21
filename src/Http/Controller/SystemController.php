@@ -46,13 +46,13 @@ class SystemController extends PublicController
 
         foreach ($checks as &$check) {
             $check['class']   = $check['result'] ? 'panel-success' : 'panel-danger';
-            $check['message'] = trans('distribution.base::message.' . $check['key']);
+            $check['message'] = trans('distribution::message.' . $check['key']);
 
             if (!$check['result']) {
                 $ready = false;
             }
         }
 
-        return view('distribution.base::system', compact('checks', 'ready'));
+        return view('distribution::system', compact('checks', 'ready'));
     }
 }

@@ -27,6 +27,6 @@ class InstallController extends PublicController
      */
     public function complete()
     {
-        return view('distribution.base::complete');
+        return view('distribution::complete');
     }
 }

@@ -11,6 +11,6 @@ class ConfigurationController extends PublicController
      */
     public function index()
     {
-        return view('distribution.base::configuration');
+        return view('distribution::configuration');
     }
 }

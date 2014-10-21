@@ -14,6 +14,6 @@ class LicenseController extends PublicController
     {
         $license = (new Markdown())->parse(file_get_contents(streams_path('LICENSE')));
 
-        return view('distribution.base::license', compact('license'));
+        return view('distribution::license', compact('license'));
     }
 }
