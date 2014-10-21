@@ -1,7 +1,7 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Http\Controller;
+<?php namespace Streams\Addon\Distribution\Streams\Http\Controller;
 
 use cebe\markdown\Markdown;
-use Anomaly\Streams\Platform\Http\Controller\PublicController;
+use Streams\Platform\Http\Controller\PublicController;
 
 class LicenseController extends PublicController
 {

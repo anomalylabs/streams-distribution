@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
+<?php namespace Streams\Addon\Distribution\Streams\Command;
 
 class InstallDatabaseCommand
 {

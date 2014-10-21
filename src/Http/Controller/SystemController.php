@@ -1,6 +1,6 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Http\Controller;
+<?php namespace Streams\Addon\Distribution\Streams\Http\Controller;
 
-use Anomaly\Streams\Platform\Http\Controller\PublicController;
+use Streams\Platform\Http\Controller\PublicController;
 
 class SystemController extends PublicController
 {
@@ -45,6 +45,7 @@ class SystemController extends PublicController
         ];
 
         foreach ($checks as &$check) {
+
             $check['class']   = $check['result'] ? 'panel-success' : 'panel-danger';
             $check['message'] = trans('distribution::message.' . $check['key']);
 

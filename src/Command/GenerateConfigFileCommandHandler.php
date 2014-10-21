@@ -1,6 +1,6 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
+<?php namespace Streams\Addon\Distribution\Streams\Command;
 
-use Anomaly\Streams\Platform\Support\Generator;
+use Streams\Platform\Support\Generator;
 
 class GenerateConfigFileCommandHandler
 {
