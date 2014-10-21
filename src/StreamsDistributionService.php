@@ -1,10 +1,10 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
 use Illuminate\Http\Request;
-use Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand;
 use Anomaly\Streams\Platform\Traits\CommandableTrait;
-use Streams\Addon\Distribution\Streams\Command\InstallDatabaseCommand;
-use Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallDatabaseCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand;
 
 class StreamsDistributionService
 {

@@ -4,7 +4,9 @@
 
 {{ section "content" }}
 
-<form method="post" action="{{ url.to " installer/install" }}">
+<form method="post" action="{{ url.to "installer/install" }}">
+
+{{{ form.token }}}
 
 <div class="panel panel-default">
 
