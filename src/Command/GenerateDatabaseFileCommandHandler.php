@@ -24,6 +24,8 @@ class GenerateDatabaseFileCommandHandler
         $path = base_path('config/database.php');
 
         $this->generator->make($template, $data, $path);
+
+        $this->setDatabaseConfig();
     }
 
     protected function compileConnection(GenerateDatabaseFileCommand $command)
@@ -40,5 +42,13 @@ class GenerateDatabaseFileCommandHandler
 
         return $this->generator->compile($template, $data);
     }
+
+    protected function setDatabaseConfig()
+    {
+        $files = app('files');
+
+        $database = $files->getRequire(base_path('config/database.php'));
+
+        app('config')->set('database', $database);
+    }
 }
- 
