@@ -1,10 +1,10 @@
-<?php namespace Anomaly\Streams\Distribution\Base;
+<?php namespace Streams\Addon\Distribution\Streams;
 
-use Anomaly\Streams\Platform\Addon\Distribution\DistributionAddon;
+use Streams\Platform\Addon\Distribution\DistributionAddon;
 
 class StreamsDistribution extends DistributionAddon
 {
-    protected $slug = 'base';
+    protected $slug = 'streams';
 
     public function getAdminTheme()
     {

@@ -1,2 +1,2 @@
-Streams Distribution Addon
-==========================
+streams-distribution
+=================

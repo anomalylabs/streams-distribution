@@ -1,25 +1,26 @@
-<?php namespace Anomaly\Streams\Distribution\Streams\Command;
+<?php namespace Streams\Addon\Distribution\Streams\Command;
 
-class WriteAppFileCommand
+class GenerateConfigFileCommand
 {
-    /**
-     * @var
-     */
-    protected $timezone;
+    protected $key;
 
-    /**
-     * @var
-     */
     protected $locale;
 
-    /**
-     * @param $locale
-     * @param $timezone
-     */
-    function __construct($locale, $timezone)
+    protected $timezone;
+
+    function __construct($key, $locale, $timezone)
     {
+        $this->key      = $key;
         $this->locale   = $locale;
         $this->timezone = $timezone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKey()
+    {
+        return $this->key;
     }
 
     /**

@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Distribution\Streams\Provider;
+<?php namespace Streams\Addon\Distribution\Streams\Provider;
 
 class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
@@ -14,7 +14,7 @@ class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\Rou
      */
     public function map()
     {
-        $prefix = 'Streams\Addon\Distribution\Base\Http\Controller\\';
+        $prefix = 'Streams\Addon\Distribution\Streams\Http\Controller\\';
 
         get(
             'installer',

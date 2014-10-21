@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Distribution\Base;
+<?php namespace Streams\Addon\Distribution\Streams;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -10,6 +10,6 @@ class StreamsDistributionServiceProvider extends ServiceProvider
     public function register()
     {
         // Register routes.
-        $this->app->register('Streams\Addon\Distribution\Base\Provider\RoutesServiceProvider');
+        $this->app->register('Streams\Addon\Distribution\Streams\Provider\RoutesServiceProvider');
     }
 }
