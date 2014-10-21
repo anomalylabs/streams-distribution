@@ -1,2 +1,2 @@
-base-distribution
-=================
+Streams Distribution Addon
+==========================

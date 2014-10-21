@@ -1,0 +1,17 @@
+{
+    "name": "anomaly/streams-distribution",
+    "type": "streams-addon",
+    "description": "Streams distribution addon.",
+    "authors": [
+        {
+            "name": "AnomalyLabs",
+            "email": "hello@anomaly.is"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}
