@@ -3,7 +3,7 @@
 class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
     protected $middleware = [];
-    
+
     /**
      * Filter before routing.
      */
@@ -16,7 +16,7 @@ class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\Rou
      */
     public function map()
     {
-        $prefix = 'Streams\Addon\Distribution\Streams\Http\Controller\\';
+        $prefix = 'Anomaly\Streams\Addon\Distribution\Streams\Http\Controller\\';
 
         get(
             'installer',
