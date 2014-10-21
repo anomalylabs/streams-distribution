@@ -1,17 +1,17 @@
-<?php namespace Anomaly\Streams\Distribution\Base\Http\Controller;
+<?php namespace Anomaly\Streams\Distribution\Streams\Http\Controller;
 
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
-use Anomaly\Streams\Distribution\Base\BaseDistributionService;
+use Anomaly\Streams\Distribution\Streams\StreamsDistributionService;
 
 class InstallController extends PublicController
 {
     /**
      * Install the system.
      *
-     * @param BaseDistributionService $service
+     * @param StreamsDistributionService $service
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function install(BaseDistributionService $service)
+    public function install(StreamsDistributionService $service)
     {
         if ($service->install()) {
 

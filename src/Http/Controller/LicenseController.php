@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Distribution\Base\Http\Controller;
+<?php namespace Anomaly\Streams\Distribution\Streams\Http\Controller;
 
 use cebe\markdown\Markdown;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
