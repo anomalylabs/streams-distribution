@@ -1,5 +1,6 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
+use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
 use Illuminate\Http\Request;
 use Anomaly\Streams\Platform\Traits\CommandableTrait;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsCommand;
@@ -26,6 +27,8 @@ class StreamsDistributionService
 
         $this->installDatabase();
         $this->installStreams();
+
+        $this->syncModules();
         $this->installModules();
 
         $this->installAdministrator();
@@ -69,6 +72,13 @@ class StreamsDistributionService
     protected function installStreams()
     {
         $command = new InstallStreamsCommand();
+
+        $this->execute($command);
+    }
+
+    protected function syncModules()
+    {
+        $command = new SyncModulesCommand();
 
         $this->execute($command);
     }
