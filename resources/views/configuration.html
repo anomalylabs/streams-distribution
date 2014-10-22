@@ -4,7 +4,7 @@
 
 {{ section "content" }}
 
-<form method="post" action="{{ url.to "installer/install" }}">
+<form method="post" action="{{ url.to " installer/install" }}">
 
 {{{ form.token }}}
 
@@ -101,6 +101,26 @@
             <label>Application Reference</label>
             <small class="help-block">What is the reference slug of your application?</small>
             <input type="text" name="application[reference]" value="defualt" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Default Locale</label>
+            <small class="help-block">What is the default locale of your application?</small>
+            <select name="application[locale]" class="form-control">
+                <option value="en" selected="selected">English</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Timezone</label>
+            <small class="help-block">What is the timezone of your application?</small>
+            <select name="application[timezone]" class="form-control">
+                <option value="UTC">UTC</option>
+            </select>
         </div>
 
     </div>
