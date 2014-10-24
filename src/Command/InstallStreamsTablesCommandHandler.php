@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 
-class InstallStreamsCommandHandler
+class InstallStreamsTablesCommandHandler
 {
     protected $db;
 
@@ -14,13 +14,11 @@ class InstallStreamsCommandHandler
         $this->schema = app('db')->connection()->getSchemaBuilder();
     }
 
-    public function handle(InstallStreamsCommand $command)
+    public function handle(InstallStreamsTablesCommand $command)
     {
         $this->installStreamsTable();
         $this->installFieldsTable();
         $this->installAssignmentsTable();
-
-        $this->installModulesTable();
     }
 
     protected function installStreamsTable()
@@ -87,23 +85,6 @@ class InstallStreamsCommandHandler
                 $table->boolean('is_required')->default(0);
                 $table->boolean('is_translatable')->default(0);
                 $table->boolean('is_revisionable')->default(0);
-
-            }
-        );
-    }
-
-    protected function installModulesTable()
-    {
-        $this->schema->dropIfExists('streams_modules');
-
-        $this->schema->create(
-            'streams_modules',
-            function (Blueprint $table) {
-
-                $table->increments('id');
-                $table->string('slug');
-                $table->boolean('is_installed')->default(0);
-                $table->string('is_enabled')->default(0);
 
             }
         );

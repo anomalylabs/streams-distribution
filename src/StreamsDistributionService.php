@@ -1,13 +1,15 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
-use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand;
 use Illuminate\Http\Request;
 use Anomaly\Streams\Platform\Traits\CommandableTrait;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsCommand;
+use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallDatabaseCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallApplicationTablesCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallRevisionsTableCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsTablesCommand;
 
 class StreamsDistributionService
 {
@@ -25,13 +27,17 @@ class StreamsDistributionService
         $this->generateConfigFile();
         $this->generateDatabaseFile();
 
-        $this->installDatabase();
-        $this->installStreams();
+        $this->installApplicationTables();
+        $this->installStreamsTables();
+        $this->installModulesTable();
+        $this->installRevisionsTable();
 
         $this->syncModules();
         $this->installModules();
 
         $this->installAdministrator();
+
+        die;
 
         return true;
     }
@@ -62,16 +68,30 @@ class StreamsDistributionService
         $this->execute($command);
     }
 
-    protected function installDatabase()
+    protected function installApplicationTables()
     {
-        $command = new InstallDatabaseCommand();
+        $command = new InstallApplicationTablesCommand();
 
         $this->execute($command);
     }
 
-    protected function installStreams()
+    protected function installStreamsTables()
     {
-        $command = new InstallStreamsCommand();
+        $command = new InstallStreamsTablesCommand();
+
+        $this->execute($command);
+    }
+
+    protected function installModulesTable()
+    {
+        $command = new InstallModulesTableCommand();
+
+        $this->execute($command);
+    }
+
+    protected function installRevisionsTable()
+    {
+        $command = new InstallRevisionsTableCommand();
 
         $this->execute($command);
     }

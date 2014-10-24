@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 
-class InstallDatabaseCommandHandler
+class InstallApplicationTablesCommandHandler
 {
     protected $db;
 
@@ -14,7 +14,7 @@ class InstallDatabaseCommandHandler
         $this->schema = app('db')->connection()->getSchemaBuilder();
     }
 
-    public function handle(InstallDatabaseCommand $command)
+    public function handle(InstallApplicationTablesCommand $command)
     {
         $this->setPrefix(null);
 
@@ -23,6 +23,7 @@ class InstallDatabaseCommandHandler
 
         $this->installDefaultApplication();
 
+        // TODO: Get this from the request data
         $this->setPrefix('default_');
     }
 

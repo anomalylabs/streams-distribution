@@ -1,6 +1,6 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
 
-class InstallDatabaseCommand
+class InstallApplicationTablesCommand
 {
 }
  
