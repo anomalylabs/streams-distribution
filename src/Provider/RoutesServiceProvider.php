@@ -29,6 +29,7 @@ class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\Rou
         get('installer/license', $prefix . 'LicenseController@index');
         get('installer/configuration', $prefix . 'ConfigurationController@index');
         post('installer/install', $prefix . 'InstallController@install');
-        get('installer/complete', $prefix . 'InstallController@complete');
+
+        get('/', $prefix . 'InstallController@complete');
     }
 }

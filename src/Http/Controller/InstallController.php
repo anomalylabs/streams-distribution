@@ -15,7 +15,7 @@ class InstallController extends PublicController
     {
         if ($service->install()) {
 
-            return redirect('installer/complete');
+            return redirect('/');
 
         }
     }
