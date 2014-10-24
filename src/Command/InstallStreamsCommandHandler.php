@@ -63,7 +63,7 @@ class InstallStreamsCommandHandler
                 $table->string('type');
                 $table->text('settings');
                 $table->text('rules');
-                $table->string('is_locked')->default(0);
+                $table->boolean('is_locked')->default(0);
 
             }
         );
@@ -81,12 +81,12 @@ class InstallStreamsCommandHandler
                 $table->integer('sort_order');
                 $table->integer('stream_id');
                 $table->integer('field_id');
-                $table->string('name');
-                $table->text('instructions');
-                $table->text('settings');
-                $table->text('rules');
-                $table->string('is_translatable')->default(0);
-                $table->string('is_revisionable')->default(0);
+                $table->string('label')->nullable();
+                $table->text('instructions')->nullable();
+                $table->boolean('is_unique')->default(0);
+                $table->boolean('is_required')->default(0);
+                $table->boolean('is_translatable')->default(0);
+                $table->boolean('is_revisionable')->default(0);
 
             }
         );
@@ -102,11 +102,10 @@ class InstallStreamsCommandHandler
 
                 $table->increments('id');
                 $table->string('slug');
-                $table->string('is_installed')->default(0);
+                $table->boolean('is_installed')->default(0);
                 $table->string('is_enabled')->default(0);
 
             }
         );
     }
 }
- 
