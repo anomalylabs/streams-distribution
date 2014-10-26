@@ -1,6 +1,7 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand;
+use Anomaly\Streams\Addon\Module\Users\User\UserService;
 use Illuminate\Http\Request;
 use Anomaly\Streams\Platform\Traits\CommandableTrait;
 use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
@@ -17,9 +18,12 @@ class StreamsDistributionService
 
     protected $request;
 
-    function __construct(Request $request)
+    protected $user;
+
+    function __construct(Request $request, UserService $user)
     {
         $this->request = $request;
+        $this->user    = $user;
     }
 
     public function install()
@@ -112,15 +116,9 @@ class StreamsDistributionService
 
     protected function installAdministrator()
     {
-        /*$input = $this->request->get('administrator');
+        $credentials = $this->request->get('administrator');
 
-        $email    = $input['email'];
-        $username = $input['username'];
-        $password = $input['password'];
-
-        $command = new InstallAdministratorCommand($username, $email, $password);
-
-        $this->execute($command);*/
+        $this->user->create($credentials, true);
     }
 }
  
