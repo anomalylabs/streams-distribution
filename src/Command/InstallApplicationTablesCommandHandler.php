@@ -67,7 +67,7 @@ class InstallApplicationTablesCommandHandler
         // TODO: Get this from request input.
         $data = [
             'name'       => 'Default',
-            'reference'  => 'defualt',
+            'reference'  => 'default',
             'domain'     => 'streams.app',
             'is_enabled' => true,
         ];
