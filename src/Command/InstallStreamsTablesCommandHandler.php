@@ -80,6 +80,7 @@ class InstallStreamsTablesCommandHandler
                 $table->integer('stream_id');
                 $table->integer('field_id');
                 $table->string('label')->nullable();
+                $table->string('placeholder')->nullable();
                 $table->text('instructions')->nullable();
                 $table->boolean('is_unique')->default(0);
                 $table->boolean('is_required')->default(0);

@@ -41,8 +41,6 @@ class StreamsDistributionService
 
         $this->installAdministrator();
 
-        die;
-
         return true;
     }
 
