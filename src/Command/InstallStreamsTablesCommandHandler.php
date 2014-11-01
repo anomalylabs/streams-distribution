@@ -2,25 +2,60 @@
 
 use Illuminate\Database\Schema\Blueprint;
 
+/**
+ * Class InstallStreamsTablesCommandHandler
+ *
+ * @link          http://anomaly.is/streams-platform
+ * @author        AnomalyLabs, Inc. <hello@anomaly.is>
+ * @author        Ryan Thompson <ryan@anomaly.is>
+ * @package       Anomaly\Streams\Addon\Distribution\Streams\Command
+ */
 class InstallStreamsTablesCommandHandler
 {
+
+    /**
+     * The db object.
+     *
+     * @var mixed
+     */
     protected $db;
 
+    /**
+     * The schema object.
+     *
+     * @var
+     */
     protected $schema;
 
+    /**
+     *
+     */
     function __construct()
     {
         $this->db     = app('db');
         $this->schema = app('db')->connection()->getSchemaBuilder();
     }
 
+    /**
+     * Handle the command.
+     *
+     * @param InstallStreamsTablesCommand $command
+     */
     public function handle(InstallStreamsTablesCommand $command)
     {
         $this->installStreamsTable();
+        $this->installStreamsTranslationsTable();
+
         $this->installFieldsTable();
+        $this->installFieldsTranslationsTable();
+
         $this->installAssignmentsTable();
+        $this->installAssignmentsTranslationsTable();
     }
 
+    /**
+     * Install the streams table.
+     */
     protected function installStreamsTable()
     {
         $this->schema->dropIfExists('streams_streams');
@@ -41,11 +76,34 @@ class InstallStreamsTablesCommandHandler
                 $table->string('is_hidden')->default(0);
                 $table->string('is_translatable')->default(0);
                 $table->string('is_revisionable')->default(0);
-
             }
         );
     }
 
+    /**
+     * Install the streams translations table.
+     */
+    protected function installStreamsTranslationsTable()
+    {
+        $this->schema->dropIfExists('streams_streams_translations');
+
+        $this->schema->create(
+            'streams_streams_translations',
+            function (Blueprint $table) {
+
+                $table->increments('id');
+                $table->integer('stream_id');
+                $table->string('locale')->index();
+
+                $table->string('name');
+                $table->string('description')->nullable();
+            }
+        );
+    }
+
+    /**
+     * Install the fields table.
+     */
     protected function installFieldsTable()
     {
         $this->schema->dropIfExists('streams_fields');
@@ -62,11 +120,33 @@ class InstallStreamsTablesCommandHandler
                 $table->text('settings');
                 $table->text('rules');
                 $table->boolean('is_locked')->default(0);
-
             }
         );
     }
 
+    /**
+     * Install the fields translations table.
+     */
+    protected function installFieldsTranslationsTable()
+    {
+        $this->schema->dropIfExists('streams_fields_translations');
+
+        $this->schema->create(
+            'streams_fields_translations',
+            function (Blueprint $table) {
+
+                $table->increments('id');
+                $table->integer('field_id');
+                $table->string('locale')->index();
+
+                $table->string('name');
+            }
+        );
+    }
+
+    /**
+     * Install the assignments table.
+     */
     protected function installAssignmentsTable()
     {
         $this->schema->dropIfExists('streams_assignments');
@@ -86,7 +166,28 @@ class InstallStreamsTablesCommandHandler
                 $table->boolean('is_required')->default(0);
                 $table->boolean('is_translatable')->default(0);
                 $table->boolean('is_revisionable')->default(0);
+            }
+        );
+    }
 
+    /**
+     * Install the assignments translations table.
+     */
+    protected function installAssignmentsTranslationsTable()
+    {
+        $this->schema->dropIfExists('streams_assignments_translations');
+
+        $this->schema->create(
+            'streams_assignments_translations',
+            function (Blueprint $table) {
+
+                $table->increments('id');
+                $table->integer('assignment_id');
+                $table->string('locale')->index();
+
+                $table->string('label')->nullable();
+                $table->string('placeholder')->nullable();
+                $table->text('instructions')->nullable();
             }
         );
     }
