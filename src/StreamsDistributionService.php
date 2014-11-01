@@ -1,19 +1,20 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand;
-use Anomaly\Streams\Addon\Module\Users\User\UserService;
-use Illuminate\Http\Request;
-use Anomaly\Streams\Platform\Traits\CommandableTrait;
-use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallApplicationTablesCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallRevisionsTableCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallApplicationTablesCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand;
+use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallRevisionsTableCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsTablesCommand;
+use Anomaly\Streams\Addon\Module\Users\User\UserService;
+use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
+use Anomaly\Streams\Platform\Traits\CommandableTrait;
+use Illuminate\Http\Request;
 
 class StreamsDistributionService
 {
+
     use CommandableTrait;
 
     protected $request;
