@@ -17,8 +17,13 @@ class InstallStreamsTablesCommandHandler
     public function handle(InstallStreamsTablesCommand $command)
     {
         $this->installStreamsTable();
+        $this->installStreamsTranslationsTable();
+
         $this->installFieldsTable();
+        $this->installFieldsTranslationsTable();
+
         $this->installAssignmentsTable();
+        $this->installAssignmentsTranslationsTable();
     }
 
     protected function installStreamsTable()
@@ -46,6 +51,25 @@ class InstallStreamsTablesCommandHandler
         );
     }
 
+    protected function installStreamsTranslationsTable()
+    {
+        $this->schema->dropIfExists('streams_streams_translations');
+
+        $this->schema->create(
+            'streams_streams_translations',
+            function (Blueprint $table) {
+
+                $table->increments('id');
+                $table->integer('stream_id');
+                $table->string('locale')->index();
+
+                $table->string('name');
+                $table->string('description')->nullable();
+
+            }
+        );
+    }
+
     protected function installFieldsTable()
     {
         $this->schema->dropIfExists('streams_fields');
@@ -62,6 +86,24 @@ class InstallStreamsTablesCommandHandler
                 $table->text('settings');
                 $table->text('rules');
                 $table->boolean('is_locked')->default(0);
+
+            }
+        );
+    }
+
+    protected function installFieldsTranslationsTable()
+    {
+        $this->schema->dropIfExists('streams_fields_translations');
+
+        $this->schema->create(
+            'streams_fields_translations',
+            function (Blueprint $table) {
+
+                $table->increments('id');
+                $table->integer('field_id');
+                $table->string('locale')->index();
+
+                $table->string('name');
 
             }
         );
@@ -86,6 +128,26 @@ class InstallStreamsTablesCommandHandler
                 $table->boolean('is_required')->default(0);
                 $table->boolean('is_translatable')->default(0);
                 $table->boolean('is_revisionable')->default(0);
+
+            }
+        );
+    }
+
+    protected function installAssignmentsTranslationsTable()
+    {
+        $this->schema->dropIfExists('streams_assignments_translations');
+
+        $this->schema->create(
+            'streams_assignments_translations',
+            function (Blueprint $table) {
+
+                $table->increments('id');
+                $table->integer('assignment_id');
+                $table->string('locale')->index();
+
+                $table->string('label')->nullable();
+                $table->string('placeholder')->nullable();
+                $table->text('instructions')->nullable();
 
             }
         );
