@@ -49,7 +49,7 @@ class StreamsDistributionService
     {
         $locale   = 'en';
         $timezone = 'UTC';
-        $key      = rand_string(30);
+        $key      = rand_string(32);
 
         $command = new GenerateConfigFileCommand($key, $locale, $timezone);
 
