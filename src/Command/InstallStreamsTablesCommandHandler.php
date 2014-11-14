@@ -28,7 +28,7 @@ class InstallStreamsTablesCommandHandler
     protected $schema;
 
     /**
-     *
+     * Create a new InstallStreamsTablesCommandHandler instance.
      */
     function __construct()
     {
@@ -38,10 +38,8 @@ class InstallStreamsTablesCommandHandler
 
     /**
      * Handle the command.
-     *
-     * @param InstallStreamsTablesCommand $command
      */
-    public function handle(InstallStreamsTablesCommand $command)
+    public function handle()
     {
         $this->installStreamsTable();
         $this->installStreamsTranslationsTable();
@@ -117,7 +115,7 @@ class InstallStreamsTablesCommandHandler
                 $table->string('slug');
                 $table->string('name');
                 $table->string('type');
-                $table->text('settings');
+                $table->text('config');
                 $table->text('rules');
                 $table->boolean('is_locked')->default(0);
             }

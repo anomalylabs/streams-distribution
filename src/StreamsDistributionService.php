@@ -7,7 +7,6 @@ use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallRevisionsTableCommand;
 use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsTablesCommand;
-use Anomaly\Streams\Addon\Module\Users\User\UserService;
 use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
 use Anomaly\Streams\Platform\Traits\CommandableTrait;
 use Illuminate\Http\Request;
@@ -21,10 +20,9 @@ class StreamsDistributionService
 
     protected $user;
 
-    function __construct(Request $request, UserService $user)
+    function __construct(Request $request)
     {
         $this->request = $request;
-        $this->user    = $user;
     }
 
     public function install()
@@ -41,6 +39,7 @@ class StreamsDistributionService
         $this->installModules();
 
         $this->installAdministrator();
+        die('Done');
 
         return true;
     }
@@ -117,7 +116,11 @@ class StreamsDistributionService
     {
         $credentials = $this->request->get('administrator');
 
-        $this->user->create($credentials, true);
+        $users = app('Anomaly\Streams\Addon\Module\Users\User\UserService');
+        $roles = app('Anomaly\Streams\Addon\Module\Users\Role\RoleService');
+
+        $users->register($credentials, true);
+        $roles->create('Administrator', 'admin');
     }
 }
  
