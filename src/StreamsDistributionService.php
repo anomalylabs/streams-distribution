@@ -121,6 +121,7 @@ class StreamsDistributionService
 
         $users->register($credentials, true);
         $roles->create('Administrator', 'admin');
+        $roles->create('User', 'user');
     }
 }
  
