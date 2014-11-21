@@ -163,7 +163,6 @@ class InstallStreamsTablesCommandHandler
                 $table->boolean('is_unique')->default(0);
                 $table->boolean('is_required')->default(0);
                 $table->boolean('is_translatable')->default(0);
-                $table->boolean('is_revisionable')->default(0);
             }
         );
     }
