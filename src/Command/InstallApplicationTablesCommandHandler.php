@@ -4,6 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class InstallApplicationTablesCommandHandler
 {
+
     protected $db;
 
     protected $schema;
@@ -21,10 +22,10 @@ class InstallApplicationTablesCommandHandler
         $this->installApplicationsTable();
         $this->installApplicationsDomainsTable();
 
-        $this->installDefaultApplication();
+        $this->installDefaultApplication($command->getName(), $command->getDomain(), $command->getReference());
 
         // TODO: Get this from the request data
-        $this->setPrefix('default_');
+        $this->setPrefix($command->getReference() . '_');
     }
 
     protected function installApplicationsTable()
@@ -40,7 +41,6 @@ class InstallApplicationTablesCommandHandler
                 $table->string('reference');
                 $table->string('domain');
                 $table->string('is_enabled');
-
             }
         );
     }
@@ -57,18 +57,17 @@ class InstallApplicationTablesCommandHandler
                 $table->integer('application_id');
                 $table->string('domain');
                 $table->string('locale');
-
             }
         );
     }
 
-    protected function installDefaultApplication()
+    protected function installDefaultApplication($name, $domain, $reference)
     {
-        // TODO: Get this from request input.
+
         $data = [
-            'name'       => 'Default',
-            'reference'  => 'default',
-            'domain'     => 'streams.app',
+            'name'       => $name,
+            'domain'     => $domain,
+            'reference'  => $reference,
             'is_enabled' => true,
         ];
 

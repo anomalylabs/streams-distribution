@@ -11,5 +11,8 @@
 class InstallStreamsTablesCommand
 {
 
+    public function __construct()
+    {
+    }
 }
  

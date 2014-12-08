@@ -1,36 +1,18 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
-use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallApplicationTablesCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallRevisionsTableCommand;
-use Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsTablesCommand;
-use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
-use Anomaly\Streams\Platform\Traits\CommandableTrait;
-use Illuminate\Http\Request;
+use Laracasts\Commander\CommanderTrait;
 
 class StreamsDistributionService
 {
 
-    use CommandableTrait;
+    use CommanderTrait;
 
-    protected $request;
-
-    protected $user;
-
-    function __construct(Request $request)
+    public function install(array $parameters)
     {
-        $this->request = $request;
-    }
+        $this->generateConfigFile($parameters);
+        $this->generateDatabaseFile($parameters);
 
-    public function install()
-    {
-        $this->generateConfigFile();
-        $this->generateDatabaseFile();
-
-        $this->installApplicationTables();
+        $this->installApplicationTables($parameters);
         $this->installStreamsTables();
         $this->installModulesTable();
         $this->installRevisionsTable();
@@ -38,83 +20,78 @@ class StreamsDistributionService
         $this->syncModules();
         $this->installModules();
 
-        $this->installAdministrator();
-        die('Done');
+        $this->installAdministrator($parameters);
 
         return true;
     }
 
-    private function generateConfigFile()
+    private function generateConfigFile(array $parameters)
     {
-        $locale   = 'en';
-        $timezone = 'UTC';
-        $key      = rand_string(32);
+        $data = [
+            'locale'   => 'en',
+            'timezone' => 'UTC',
+            'key'      => rand_string(32)
+        ];
 
-        $command = new GenerateConfigFileCommand($key, $locale, $timezone);
-
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand', $data);
     }
 
-    protected function generateDatabaseFile()
+    protected function generateDatabaseFile(array $parameters)
     {
-        $input = $this->request->get('database');
+        $data = [
+            'host'     => $parameters['database_host'],
+            'database' => $parameters['database_name'],
+            'driver'   => $parameters['database_driver'],
+            'username' => $parameters['database_username'],
+            'password' => $parameters['database_password'],
+        ];
 
-        $host     = $input['host'];
-        $user     = $input['user'];
-        $driver   = $input['driver'];
-        $database = $input['database'];
-        $password = $input['password'];
-
-        $command = new GenerateDatabaseFileCommand($driver, $host, $database, $user, $password);
-
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand', $data);
     }
 
-    protected function installApplicationTables()
+    protected function installApplicationTables(array $parameters)
     {
-        $command = new InstallApplicationTablesCommand();
+        $data = [
+            'name'      => $parameters['application_name'],
+            'domain'    => $parameters['application_domain'],
+            'reference' => $parameters['application_reference'],
+        ];
 
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallApplicationTablesCommand', $data);
     }
 
     protected function installStreamsTables()
     {
-        $command = new InstallStreamsTablesCommand();
-
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsTablesCommand');
     }
 
     protected function installModulesTable()
     {
-        $command = new InstallModulesTableCommand();
-
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand');
     }
 
     protected function installRevisionsTable()
     {
-        $command = new InstallRevisionsTableCommand();
-
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallRevisionsTableCommand');
     }
 
     protected function syncModules()
     {
-        $command = new SyncModulesCommand();
-
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand');
     }
 
     protected function installModules()
     {
-        $command = new InstallModulesCommand();
-
-        $this->execute($command);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand');
     }
 
-    protected function installAdministrator()
+    protected function installAdministrator(array $parameters)
     {
-        $credentials = $this->request->get('administrator');
+        $credentials = [
+            'email'    => $parameters['admin_email'],
+            'username' => $parameters['admin_username'],
+            'password' => $parameters['admin_password']
+        ];
 
         $users = app('Anomaly\Streams\Addon\Module\Users\User\UserService');
         $roles = app('Anomaly\Streams\Addon\Module\Users\Role\RoleService');

@@ -2,6 +2,7 @@
 
 class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
+
     protected $middleware = [];
 
     /**
@@ -12,23 +13,14 @@ class RoutesServiceProvider extends \Illuminate\Foundation\Support\Providers\Rou
     }
 
     /**
-     * Map the ditribution routes.
+     * Map the distribution routes.
      */
     public function map()
     {
         $prefix = 'Anomaly\Streams\Addon\Distribution\Streams\Http\Controller\\';
 
-        get(
-            'installer',
-            function () {
-                return redirect('installer/system');
-            }
-        );
-
-        get('installer/system', $prefix . 'SystemController@index');
-        get('installer/license', $prefix . 'LicenseController@index');
-        get('installer/configuration', $prefix . 'ConfigurationController@index');
-        post('installer/install', $prefix . 'InstallController@install');
+        get('installer', $prefix . 'InstallerController@index');
+        post('installer', $prefix . 'InstallerController@index');
 
         get('/', $prefix . 'InstallController@complete');
     }

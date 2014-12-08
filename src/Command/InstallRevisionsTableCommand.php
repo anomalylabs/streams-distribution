@@ -2,5 +2,9 @@
 
 class InstallRevisionsTableCommand
 {
+
+    public function __construct()
+    {
+    }
 }
  

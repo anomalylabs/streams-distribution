@@ -2,5 +2,9 @@
 
 class InstallModulesCommand
 {
+
+    public function __construct()
+    {
+    }
 }
  

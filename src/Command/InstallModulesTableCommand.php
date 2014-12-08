@@ -2,5 +2,9 @@
 
 class InstallModulesTableCommand
 {
+
+    public function __construct()
+    {
+    }
 }
  
