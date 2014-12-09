@@ -39,7 +39,7 @@ class InstallStreamsTablesCommandHandler
     /**
      * Handle the command.
      */
-    public function handle()
+    public function handle(InstallStreamsTablesCommand $command)
     {
         $this->installStreamsTable();
         $this->installStreamsTranslationsTable();

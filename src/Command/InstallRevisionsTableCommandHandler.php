@@ -4,6 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class InstallRevisionsTableCommandHandler
 {
+
     protected $db;
 
     protected $schema;
@@ -36,7 +37,6 @@ class InstallRevisionsTableCommandHandler
                 $table->string('key');
                 $table->text('old_value')->nullable();
                 $table->text('new_value')->nullable();
-
             }
         );
     }
