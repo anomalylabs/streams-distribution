@@ -28,6 +28,7 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.database_driver.instructions',
                             'slug'         => 'database_driver',
                             'type'         => 'select',
+                            'value'        => 'mysql',
                             'rules'        => [
                                 'required',
                             ],
@@ -46,6 +47,7 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.database_host.instructions',
                             'slug'         => 'database_host',
                             'type'         => 'text',
+                            'value'        => 'localhost',
                             'rules'        => [
                                 'required',
                             ],
@@ -56,6 +58,7 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.database_name.instructions',
                             'slug'         => 'database_name',
                             'type'         => 'text',
+                            'value'        => 'streams',
                             'rules'        => [
                                 'required',
                             ],
@@ -66,6 +69,7 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.database_username.instructions',
                             'slug'         => 'database_username',
                             'type'         => 'text',
+                            'value'        => 'root',
                             'rules'        => [
                                 'required',
                             ],
@@ -94,6 +98,7 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.admin_username.instructions',
                             'slug'         => 'admin_username',
                             'type'         => 'text',
+                            'value'        => 'admin',
                             'rules'        => [
                                 'required',
                             ],
@@ -132,6 +137,7 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.application_name.instructions',
                             'slug'         => 'application_name',
                             'type'         => 'text',
+                            'value'        => 'Default',
                             'rules'        => [
                                 'required',
                             ],
@@ -142,6 +148,7 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.application_reference.instructions',
                             'slug'         => 'application_reference',
                             'type'         => 'slug',
+                            'value'        => 'default',
                             'rules'        => [
                                 'required',
                             ],
