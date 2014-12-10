@@ -1,9 +1,11 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
 
-use Anomaly\Streams\Platform\Support\Generator;
+use Way\Generators\Compilers\TemplateCompiler;
+use Way\Generators\Generator;
 
 class GenerateDatabaseFileCommandHandler
 {
+
     protected $generator;
 
     function __construct(Generator $generator)
@@ -19,11 +21,13 @@ class GenerateDatabaseFileCommandHandler
 
         $data = compact('driver', 'connection');
 
-        $template = file_get_contents(streams_path('resources/assets/generator/database.txt'));
+        $template = streams_path('resources/assets/generator/database.txt');
 
-        $path = base_path('config/database.php');
+        $file = base_path('config/database.php');
 
-        $this->generator->make($template, $data, $path);
+        @unlink($file);
+
+        $this->generator->make($template, $data, $file);
 
         $this->setDatabaseConfig();
     }
@@ -36,11 +40,11 @@ class GenerateDatabaseFileCommandHandler
         $database = $command->getDatabase();
         $password = $command->getPassword();
 
-        $template = file_get_contents(streams_path('resources/assets/generator/connections/' . $driver . '.txt'));
+        $template = streams_path('resources/assets/generator/connections/' . $driver . '.txt');
 
         $data = compact('host', 'driver', 'username', 'database', 'password');
 
-        return $this->generator->compile($template, $data);
+        return $this->generator->compile($template, $data, new TemplateCompiler());
     }
 
     protected function setDatabaseConfig()

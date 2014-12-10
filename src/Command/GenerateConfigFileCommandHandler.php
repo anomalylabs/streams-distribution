@@ -1,9 +1,10 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
 
-use Anomaly\Streams\Platform\Support\Generator;
+use Way\Generators\Generator;
 
 class GenerateConfigFileCommandHandler
 {
+
     protected $generator;
 
     function __construct(Generator $generator)
@@ -19,11 +20,13 @@ class GenerateConfigFileCommandHandler
 
         $data = compact('key', 'locale', 'timezone');
 
-        $template = file_get_contents(streams_path('resources/assets/generator/config.txt'));
+        $template = streams_path('resources/assets/generator/config.txt');
 
-        $path = base_path('config/app.php');
+        $file = base_path('config/app.php');
 
-        $this->generator->make($template, $data, $path);
+        @unlink($file);
+
+        $this->generator->make($template, $data, $file);
     }
 }
  
