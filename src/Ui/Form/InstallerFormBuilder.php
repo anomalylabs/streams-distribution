@@ -21,7 +21,7 @@ class InstallerFormBuilder extends FormBuilder
         $this->setSections(
             [
                 [
-                    'title'  => 'distribution.streams::admin.title.database',
+                    'title'  => 'distribution.streams::admin.database',
                     'fields' => [
                         [
                             'label'        => 'distribution.streams::field.database_driver.label',
@@ -90,7 +90,7 @@ class InstallerFormBuilder extends FormBuilder
                     ]
                 ],
                 [
-                    'title'  => 'distribution.streams::admin.title.administrator',
+                    'title'  => 'distribution.streams::admin.administrator',
                     'fields' => [
                         [
                             'label'        => 'distribution.streams::field.admin_username.label',
@@ -129,7 +129,7 @@ class InstallerFormBuilder extends FormBuilder
                     ]
                 ],
                 [
-                    'title'  => 'distribution.streams::admin.title.application',
+                    'title'  => 'distribution.streams::admin.application',
                     'fields' => [
                         [
                             'label'        => 'distribution.streams::field.application_name.label',
