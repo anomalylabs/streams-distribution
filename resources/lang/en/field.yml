@@ -51,3 +51,11 @@ application_domain:
     label: Primary Domain
     placeholder: localhost
     instructions: What is the primary domain of your application?
+
+application_locale:
+    label: Language
+    instructions: What is the default language of your application?
+
+application_timezone:
+    label: Timezone
+    instructions: What is the default timezone of your application?

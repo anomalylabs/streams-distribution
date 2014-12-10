@@ -30,8 +30,8 @@ class StreamsDistributionService
     private function generateConfigFile(array $parameters)
     {
         $data = [
-            'locale'   => 'en',
-            'timezone' => 'UTC',
+            'locale'   => $parameters['application_locale'],
+            'timezone' => $parameters['application_timezone'],
             'key'      => rand_string(32)
         ];
 

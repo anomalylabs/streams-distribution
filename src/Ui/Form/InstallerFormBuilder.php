@@ -164,6 +164,52 @@ class InstallerFormBuilder extends FormBuilder
                                 'required',
                             ],
                         ],
+                        [
+                            'label'        => 'distribution.streams::field.application_locale.label',
+                            'instructions' => 'distribution.streams::field.application_locale.instructions',
+                            'slug'         => 'application_locale',
+                            'type'         => 'select',
+                            'value'        => 'en',
+                            'rules'        => [
+                                'required',
+                            ],
+                            'config'       => [
+                                'options' => function () {
+
+                                        $options = [];
+
+                                        foreach (config('streams.available_locales') as $locale) {
+
+                                            $options[$locale] = trans('language.' . $locale);
+                                        }
+
+                                        return $options;
+                                    }
+                            ],
+                        ],
+                        [
+                            'label'        => 'distribution.streams::field.application_timezone.label',
+                            'instructions' => 'distribution.streams::field.application_timezone.instructions',
+                            'slug'         => 'application_timezone',
+                            'type'         => 'select',
+                            'value'        => 'UTC',
+                            'rules'        => [
+                                'required',
+                            ],
+                            'config'       => [
+                                'options' => function () {
+
+                                        $options = [];
+
+                                        foreach (timezone_identifiers_list() as $timezone) {
+
+                                            $options[$timezone] = $timezone;
+                                        }
+
+                                        return $options;
+                                    }
+                            ],
+                        ],
                     ]
                 ]
             ]
