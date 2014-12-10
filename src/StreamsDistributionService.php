@@ -1,5 +1,7 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams;
 
+use Anomaly\Streams\Addon\Module\Users\Role\RoleManager;
+use Anomaly\Streams\Addon\Module\Users\User\UserManager;
 use Laracasts\Commander\CommanderTrait;
 
 class StreamsDistributionService
@@ -93,12 +95,13 @@ class StreamsDistributionService
             'password' => $parameters['admin_password']
         ];
 
-        $users = app('Anomaly\Streams\Addon\Module\Users\User\UserService');
-        $roles = app('Anomaly\Streams\Addon\Module\Users\Role\RoleService');
+        $users = new UserManager();
+        $roles = new RoleManager();
 
-        $users->register($credentials, true);
-        $roles->create('Administrator', 'admin');
-        $roles->create('User', 'user');
+        $user = $users->create($credentials, true);
+
+        $adminRole = $roles->create(['name' => 'Administrator', 'slug' => 'admin']);
+        $userRole  = $roles->create(['name' => 'User', 'slug' => 'user']);
     }
 }
  
