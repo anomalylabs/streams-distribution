@@ -32,7 +32,7 @@ class StreamsDistributionService
         $data = [
             'locale'   => $parameters['application_locale'],
             'timezone' => $parameters['application_timezone'],
-            'key'      => rand_string(32)
+            'key'      => app('Illuminate\Support\Str')->random(32)
         ];
 
         $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand', $data);
