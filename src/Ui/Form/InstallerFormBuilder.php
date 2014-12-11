@@ -80,9 +80,6 @@ class InstallerFormBuilder extends FormBuilder
                             'instructions' => 'distribution.streams::field.database_password.instructions',
                             'slug'         => 'database_password',
                             'type'         => 'text',
-                            'rules'        => [
-                                'required',
-                            ],
                             'config'       => [
                                 'type' => 'password',
                             ],
