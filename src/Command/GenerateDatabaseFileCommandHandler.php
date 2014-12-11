@@ -21,7 +21,7 @@ class GenerateDatabaseFileCommandHandler
 
         $data = compact('driver', 'connection');
 
-        $template = streams_path('resources/assets/generator/database.txt');
+        $template = app('streams.path') . '/resources/assets/generator/database.txt';
 
         $file = base_path('config/database.php');
 
@@ -40,7 +40,7 @@ class GenerateDatabaseFileCommandHandler
         $database = $command->getDatabase();
         $password = $command->getPassword();
 
-        $template = streams_path('resources/assets/generator/connections/' . $driver . '.txt');
+        $template = app('streams.path') . '/resources/assets/generator/connections/' . $driver . '.txt';
 
         $data = compact('host', 'driver', 'username', 'database', 'password');
 

@@ -20,7 +20,7 @@ class GenerateConfigFileCommandHandler
 
         $data = compact('key', 'locale', 'timezone');
 
-        $template = streams_path('resources/assets/generator/config.txt');
+        $template = app('streams.path') . '/resources/assets/generator/config.txt';
 
         $file = base_path('config/app.php');
 
