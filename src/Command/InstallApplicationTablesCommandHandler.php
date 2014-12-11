@@ -72,6 +72,8 @@ class InstallApplicationTablesCommandHandler
         ];
 
         $this->db->table('applications')->insert($data);
+
+        app('streams.application')->locate();
     }
 
     protected function setPrefix($prefix)
