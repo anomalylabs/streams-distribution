@@ -1,3 +1,16 @@
 <?php
 
-return [];
+return [
+
+    /*
+	|--------------------------------------------------------------------------
+	| Default Themes
+	|--------------------------------------------------------------------------
+	|
+	| This defines fallback / default themes for the front and backend.
+	|
+	*/
+
+    'admin_theme' => 'streams',
+    'public_theme' => 'streams',
+];
