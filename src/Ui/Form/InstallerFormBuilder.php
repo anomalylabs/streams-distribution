@@ -2,6 +2,7 @@
 
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
+use cebe\markdown\Markdown;
 
 class InstallerFormBuilder extends FormBuilder
 {
@@ -20,6 +21,27 @@ class InstallerFormBuilder extends FormBuilder
 
         $this->setSections(
             [
+                [
+                    'fields' => [
+                        [
+                            'label'        => 'distribution.streams::field.license.label',
+                            'instructions' => 'distribution.streams::field.license.instructions',
+                            'slug'         => 'license',
+                            'type'         => 'Anomaly\Streams\Addon\Distribution\Streams\Addon\FieldType\LicenseCheckboxesFieldType',
+                            'rules'        => [
+                                'required',
+                            ],
+                            'config'       => [
+                                'agree'   => 'distribution.streams::field.license.agree',
+                                'license' => function () {
+                                        return (new Markdown())->parse(
+                                            file_get_contents(app('streams.path') . '/LICENSE')
+                                        );
+                                    }
+                            ],
+                        ],
+                    ],
+                ],
                 [
                     'title'  => 'distribution.streams::admin.database',
                     'fields' => [

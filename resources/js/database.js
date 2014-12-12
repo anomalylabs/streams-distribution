@@ -1,1 +1,0 @@
-//alert('streams/addons/shared/distributions/streams/resources/js/database.js');

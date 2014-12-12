@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'license'               => [
+        'label'        => 'License',
+        'instructions' => 'Please note addons may be licensed separately.',
+        'agree'        => 'I agree to the terms of this license.',
+    ],
     'database_driver'       => [
         'label'        => 'Driver',
         'instructions' => 'What database driver would you like to use?',
