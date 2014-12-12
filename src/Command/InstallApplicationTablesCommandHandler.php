@@ -40,7 +40,7 @@ class InstallApplicationTablesCommandHandler
                 $table->string('name');
                 $table->string('reference');
                 $table->string('domain');
-                $table->string('is_enabled');
+                $table->boolean('enabled');
             }
         );
     }
@@ -65,10 +65,10 @@ class InstallApplicationTablesCommandHandler
     {
 
         $data = [
-            'name'       => $name,
-            'domain'     => $domain,
-            'reference'  => $reference,
-            'is_enabled' => true,
+            'name'      => $name,
+            'domain'    => $domain,
+            'reference' => $reference,
+            'enabled'   => true,
         ];
 
         $this->db->table('applications')->insert($data);

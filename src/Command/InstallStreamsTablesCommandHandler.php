@@ -71,9 +71,9 @@ class InstallStreamsTablesCommandHandler
                 $table->text('view_options');
                 $table->string('title_column');
                 $table->string('order_by');
-                $table->string('is_hidden')->default(0);
-                $table->string('is_translatable')->default(0);
-                $table->string('is_revisionable')->default(0);
+                $table->string('hidden')->default(0);
+                $table->string('translatable')->default(0);
+                $table->string('revisionable')->default(0);
             }
         );
     }
@@ -117,7 +117,7 @@ class InstallStreamsTablesCommandHandler
                 $table->string('type');
                 $table->text('config');
                 $table->text('rules');
-                $table->boolean('is_locked')->default(0);
+                $table->boolean('locked')->default(0);
             }
         );
     }
@@ -160,9 +160,9 @@ class InstallStreamsTablesCommandHandler
                 $table->string('label')->nullable();
                 $table->string('placeholder')->nullable();
                 $table->text('instructions')->nullable();
-                $table->boolean('is_unique')->default(0);
-                $table->boolean('is_required')->default(0);
-                $table->boolean('is_translatable')->default(0);
+                $table->boolean('unique')->default(0);
+                $table->boolean('required')->default(0);
+                $table->boolean('translatable')->default(0);
             }
         );
     }

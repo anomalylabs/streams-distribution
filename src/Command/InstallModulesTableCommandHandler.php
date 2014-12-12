@@ -29,8 +29,8 @@ class InstallModulesTableCommandHandler
 
                 $table->increments('id');
                 $table->string('slug');
-                $table->boolean('is_installed')->default(0);
-                $table->string('is_enabled')->default(0);
+                $table->boolean('installed')->default(0);
+                $table->boolean('enabled')->default(0);
 
             }
         );
