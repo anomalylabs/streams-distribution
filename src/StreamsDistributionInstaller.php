@@ -4,7 +4,7 @@ use Anomaly\Streams\Addon\Module\Users\Role\RoleManager;
 use Anomaly\Streams\Addon\Module\Users\User\UserManager;
 use Laracasts\Commander\CommanderTrait;
 
-class StreamsDistributionService
+class StreamsDistributionInstaller
 {
 
     use CommanderTrait;
@@ -18,7 +18,6 @@ class StreamsDistributionService
         $this->installApplicationTables($parameters);
         $this->installStreamsTables();
         $this->installModulesTable();
-        $this->installRevisionsTable();
 
         $this->syncModules();
         $this->installModules();
@@ -65,22 +64,17 @@ class StreamsDistributionService
             'reference' => $parameters['application_reference'],
         ];
 
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallApplicationTablesCommand', $data);
+        $this->execute('Anomaly\Streams\Platform\Application\Command\InstallApplicationTablesCommand', $data);
     }
 
     protected function installStreamsTables()
     {
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallStreamsTablesCommand');
+        $this->execute('Anomaly\Streams\Platform\Stream\Command\InstallStreamsTablesCommand');
     }
 
     protected function installModulesTable()
     {
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesTableCommand');
-    }
-
-    protected function installRevisionsTable()
-    {
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallRevisionsTableCommand');
+        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTableCommand');
     }
 
     protected function syncModules()
@@ -90,7 +84,7 @@ class StreamsDistributionService
 
     protected function installModules()
     {
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\InstallModulesCommand');
+        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesCommand');
     }
 
     protected function installAdministrator(array $parameters)

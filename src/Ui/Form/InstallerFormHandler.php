@@ -1,16 +1,16 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams\Ui\Form;
 
-use Anomaly\Streams\Addon\Distribution\Streams\StreamsDistributionService;
+use Anomaly\Streams\Addon\Distribution\Streams\StreamsDistributionInstaller;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 
 class InstallerFormHandler
 {
 
-    public function handle(FormBuilder $builder, StreamsDistributionService $distributionService)
+    public function handle(FormBuilder $builder, StreamsDistributionInstaller $distributionInstaller)
     {
         $form = $builder->getForm();
 
-        $distributionService->install($form->pullInput('include'));
+        $distributionInstaller->install($form->pullInput('include'));
 
         $form->setResponse(redirect('/'));
     }
