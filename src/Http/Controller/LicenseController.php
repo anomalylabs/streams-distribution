@@ -12,7 +12,7 @@ class LicenseController extends PublicController
      */
     public function index()
     {
-        $license = (new Markdown())->parse(file_get_contents(streams_path('LICENSE')));
+        $license = (new Markdown())->parse(file_get_contents(app('streams.path') . '/LICENSE'));
 
         return view('distribution::license', compact('license'));
     }
