@@ -11,7 +11,7 @@ class StreamsDistributionService
 
     public function install(array $parameters)
     {
-        $this->generateStreamsFile();
+        $this->generateDistributionFile();
         $this->generateConfigFile($parameters);
         $this->generateDatabaseFile($parameters);
 
@@ -28,9 +28,9 @@ class StreamsDistributionService
         return true;
     }
 
-    protected function generateStreamsFile()
+    protected function generateDistributionFile()
     {
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateStreamsFileCommand');
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDistributionFileCommand');
     }
 
     private function generateConfigFile(array $parameters)

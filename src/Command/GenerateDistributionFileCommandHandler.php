@@ -2,7 +2,7 @@
 
 use Way\Generators\Generator;
 
-class GenerateStreamsFileCommandHandler
+class GenerateDistributionFileCommandHandler
 {
 
     protected $generator;
@@ -14,9 +14,9 @@ class GenerateStreamsFileCommandHandler
 
     public function handle()
     {
-        $template = app('streams.distribution.streams')->getPath('resources/assets/generator/streams.txt');
+        $template = app('streams.distribution.streams')->getPath('resources/assets/generator/distribution.txt');
 
-        $file = base_path('config/streams.php');
+        $file = base_path('config/distribution.php');
 
         @unlink($file);
 

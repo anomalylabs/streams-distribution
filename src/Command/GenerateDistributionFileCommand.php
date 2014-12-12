@@ -1,6 +1,6 @@
 <?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
 
-class GenerateStreamsFileCommand
+class GenerateDistributionFileCommand
 {
 
     public function __construct()
