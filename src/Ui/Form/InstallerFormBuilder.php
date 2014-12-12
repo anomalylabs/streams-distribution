@@ -197,7 +197,7 @@ class InstallerFormBuilder extends FormBuilder
 
                                         $options = [];
 
-                                        foreach (config('streams.available_locales') as $locale) {
+                                        foreach (config('streams::config.available_locales') as $locale) {
 
                                             $options[$locale] = trans('language.' . $locale);
                                         }
