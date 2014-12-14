@@ -2,7 +2,7 @@
 
 class InstallerFormValidator
 {
-    public function validateDatabase($attribute, $value, $parameters)
+    public function validateDatabase()
     {
         $input = app('request')->all();
 

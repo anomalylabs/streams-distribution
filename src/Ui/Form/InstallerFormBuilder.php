@@ -11,7 +11,7 @@ class InstallerFormBuilder extends FormBuilder
 
     protected $actions = [
         'save' => [
-            'text' => 'button.install',
+            'text' => 'streams::button.install',
         ]
     ];
 
