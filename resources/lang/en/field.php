@@ -7,8 +7,9 @@ return [
         'agree'        => 'I agree to the terms of this license and the terms of the licenses of contained add-ons.',
     ],
     'database_driver'       => [
-        'label'        => 'Driver',
-        'instructions' => 'What database driver would you like to use?',
+        'label'            => 'Driver',
+        'instructions'     => 'What database driver would you like to use?',
+        'invalid_database' => 'Could not connect to database provided.',
     ],
     'database_host'         => [
         'label'        => 'Host',

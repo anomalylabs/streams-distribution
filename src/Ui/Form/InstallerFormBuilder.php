@@ -17,6 +17,12 @@ class InstallerFormBuilder extends FormBuilder
 
     function __construct(Form $form)
     {
+        app('validator')->extend(
+            'valid_database',
+            'Anomaly\Streams\Addon\Distribution\Streams\Ui\Form\InstallerFormValidator@validateDatabase',
+            'distribution.streams::field.database_driver.invalid_database'
+        );
+
         $form->setWrapper('distribution.streams::blank');
 
         $this->setSections(
@@ -53,6 +59,7 @@ class InstallerFormBuilder extends FormBuilder
                             'value'        => 'mysql',
                             'rules'        => [
                                 'required',
+                                'valid_database',
                             ],
                             'config'       => [
                                 'options' => [
