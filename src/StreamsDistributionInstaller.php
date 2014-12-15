@@ -29,7 +29,7 @@ class StreamsDistributionInstaller
 
     protected function generateDistributionFile()
     {
-        $this->execute('\Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDistributionFileCommand');
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDistributionFileCommand');
     }
 
     private function generateConfigFile(array $parameters)
@@ -40,7 +40,7 @@ class StreamsDistributionInstaller
             'key'      => app('Illuminate\Support\Str')->random(32)
         ];
 
-        $this->execute('\Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand', $data);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand', $data);
     }
 
     protected function generateDatabaseFile(array $parameters)
@@ -53,7 +53,7 @@ class StreamsDistributionInstaller
             'password' => $parameters['database_password'],
         ];
 
-        $this->execute('\Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand', $data);
+        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand', $data);
     }
 
     protected function installApplicationTables(array $parameters)
@@ -64,27 +64,27 @@ class StreamsDistributionInstaller
             'reference' => $parameters['application_reference'],
         ];
 
-        $this->execute('\Anomaly\Streams\Platform\Application\Command\InstallApplicationTablesCommand', $data);
+        $this->execute('Anomaly\Streams\Platform\Application\Command\InstallApplicationTablesCommand', $data);
     }
 
     protected function installStreamsTables()
     {
-        $this->execute('\Anomaly\Streams\Platform\Stream\Command\InstallStreamsTablesCommand');
+        $this->execute('Anomaly\Streams\Platform\Stream\Command\InstallStreamsTablesCommand');
     }
 
     protected function installModulesTable()
     {
-        $this->execute('\Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTableCommand');
+        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTableCommand');
     }
 
     protected function syncModules()
     {
-        $this->execute('\Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand');
+        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand');
     }
 
     protected function installAllModules()
     {
-        $this->execute('\Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModulesCommand');
+        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModulesCommand');
     }
 
     protected function installAdministrator(array $parameters)
