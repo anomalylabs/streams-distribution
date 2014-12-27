@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% include "theme::partials/metadata" %}
+</head>
+<body id="welcome">
+
+<a href="http://anomaly.is/streams-platform" title="Streams Platform">
+    {{ html_image(image_path('theme::img/logo.png'), null, {'width': '128'}) }}
+</a>
+
+<h1>Streams is ready.</h1>
+
+{{ html_link('admin/login', trans('streams::button.login'), {'class': 'btn btn-success'}) }}
+
+</body>
+</html>
