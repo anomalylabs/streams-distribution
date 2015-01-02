@@ -16,6 +16,7 @@ class StreamsDistributionInstaller
         $this->generateDatabaseFile($parameters);
 
         $this->installApplicationTables($parameters);
+        $this->installRevisionsTables();
         $this->installStreamsTables();
         $this->installModulesTable();
 
@@ -65,6 +66,11 @@ class StreamsDistributionInstaller
         ];
 
         $this->execute('Anomaly\Streams\Platform\Application\Command\InstallApplicationTablesCommand', $data);
+    }
+
+    protected function installRevisionsTables()
+    {
+        $this->execute('Anomaly\Streams\Platform\Application\Command\InstallRevisionsTablesCommand');
     }
 
     protected function installStreamsTables()
