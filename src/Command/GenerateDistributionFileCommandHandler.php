@@ -1,5 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Command;
 
+use Anomaly\StreamsDistribution\StreamsDistribution;
 use Way\Generators\Generator;
 
 class GenerateDistributionFileCommandHandler
@@ -7,14 +8,17 @@ class GenerateDistributionFileCommandHandler
 
     protected $generator;
 
-    function __construct(Generator $generator)
+    protected $distribution;
+
+    function __construct(Generator $generator, StreamsDistribution $distribution)
     {
-        $this->generator = $generator;
+        $this->generator    = $generator;
+        $this->distribution = $distribution;
     }
 
     public function handle()
     {
-        $template = app('streams.distribution.streams')->getPath('resources/assets/generator/distribution.txt');
+        $template = $this->distribution->getPath('resources/assets/generator/distribution.txt');
 
         $file = base_path('config/distribution.php');
 

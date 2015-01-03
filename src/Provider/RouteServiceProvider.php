@@ -12,6 +12,6 @@ class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\Rout
         post('installer', 'Anomaly\StreamsDistribution\Http\Controller\InstallerController@index');
 
         // This is the "installation complete" page.
-        get('/', 'Anomaly\StreamsDistribution\Http\Controller\InstallController@complete');
+        get('/', 'Anomaly\StreamsDistribution\Http\Controller\InstallerController@complete');
     }
 }

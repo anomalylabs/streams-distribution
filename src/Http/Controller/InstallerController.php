@@ -10,5 +10,10 @@ class InstallerController extends PublicController
     {
         return $form->render();
     }
+
+    public function complete()
+    {
+        return view('distribution::complete');
+    }
 }
  

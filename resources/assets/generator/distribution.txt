@@ -11,6 +11,6 @@ return [
 	|
 	*/
 
-    'admin_theme' => 'streams',
-    'public_theme' => 'streams',
+    'admin_theme' => 'Anomaly\StreamsTheme\StreamsTheme',
+    'public_theme' => 'Anomaly\StreamsTheme\StreamsTheme',
 ];

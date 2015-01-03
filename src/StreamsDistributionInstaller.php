@@ -1,7 +1,7 @@
 <?php namespace Anomaly\StreamsDistribution;
 
-use Anomaly\Streams\Addon\Module\Users\Role\RoleManager;
-use Anomaly\Streams\Addon\Module\Users\User\UserManager;
+use Anomaly\UsersModule\Role\RoleManager;
+use Anomaly\UsersModule\User\UserManager;
 use Laracasts\Commander\CommanderTrait;
 
 class StreamsDistributionInstaller

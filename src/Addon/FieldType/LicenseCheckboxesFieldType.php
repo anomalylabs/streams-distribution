@@ -1,6 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Addon\FieldType;
 
-use Anomaly\CheckboxesFieldType;
+use Anomaly\CheckboxesFieldType\CheckboxesFieldType;
 
 /**
  * Class LicenseCheckboxesFieldType
@@ -17,14 +17,14 @@ class LicenseCheckboxesFieldType extends CheckboxesFieldType
      *
      * @var string
      */
-    protected $inputView = 'distribution.streams::addon/field_type/license/input';
+    protected $inputView = 'anomaly.distribution.streams::addon/field_type/license/input';
 
     /**
      * The wrapper view.
      *
      * @var string
      */
-    protected $wrapperView = 'distribution.streams::addon/field_type/license/wrapper';
+    protected $wrapperView = 'anomaly.distribution.streams::addon/field_type/license/wrapper';
 
     /**
      * Get the view data.
