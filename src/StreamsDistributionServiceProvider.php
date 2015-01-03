@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams;
+<?php namespace Anomaly\StreamsDistribution;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\Streams\Addon\Distribution\Streams
+ * @package       Anomaly\StreamsDistribution
  */
 class StreamsDistributionServiceProvider extends ServiceProvider
 {
@@ -49,6 +49,6 @@ class StreamsDistributionServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        $this->app->register('Anomaly\Streams\Addon\Distribution\Streams\Provider\RouteServiceProvider');
+        $this->app->register('Anomaly\StreamsDistribution\Provider\RouteServiceProvider');
     }
 }

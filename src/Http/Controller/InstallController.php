@@ -1,7 +1,7 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Http\Controller;
+<?php namespace Anomaly\StreamsDistribution\Http\Controller;
 
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
-use Anomaly\Streams\Addon\Distribution\Streams\StreamsDistributionInstaller;
+use Anomaly\StreamsDistribution\StreamsDistributionInstaller;
 
 class InstallController extends PublicController
 {

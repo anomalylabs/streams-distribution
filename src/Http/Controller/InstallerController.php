@@ -1,6 +1,6 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Http\Controller;
+<?php namespace Anomaly\StreamsDistribution\Http\Controller;
 
-use Anomaly\Streams\Addon\Distribution\Streams\Ui\Form\InstallerFormBuilder;
+use Anomaly\StreamsDistribution\Ui\Form\InstallerFormBuilder;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 
 class InstallerController extends PublicController

@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams;
+<?php namespace Anomaly\StreamsDistribution;
 
 use Anomaly\Streams\Addon\Module\Users\Role\RoleManager;
 use Anomaly\Streams\Addon\Module\Users\User\UserManager;
@@ -30,7 +30,7 @@ class StreamsDistributionInstaller
 
     protected function generateDistributionFile()
     {
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDistributionFileCommand');
+        $this->execute('Anomaly\StreamsDistribution\Command\GenerateDistributionFileCommand');
     }
 
     private function generateConfigFile(array $parameters)
@@ -41,7 +41,7 @@ class StreamsDistributionInstaller
             'key'      => app('Illuminate\Support\Str')->random(32)
         ];
 
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateConfigFileCommand', $data);
+        $this->execute('Anomaly\StreamsDistribution\Command\GenerateConfigFileCommand', $data);
     }
 
     protected function generateDatabaseFile(array $parameters)
@@ -54,7 +54,7 @@ class StreamsDistributionInstaller
             'password' => $parameters['database_password'],
         ];
 
-        $this->execute('Anomaly\Streams\Addon\Distribution\Streams\Command\GenerateDatabaseFileCommand', $data);
+        $this->execute('Anomaly\StreamsDistribution\Command\GenerateDatabaseFileCommand', $data);
     }
 
     protected function installApplicationTables(array $parameters)

@@ -1,6 +1,6 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Addon\FieldType;
+<?php namespace Anomaly\StreamsDistribution\Addon\FieldType;
 
-use Anomaly\Streams\Addon\FieldType\Checkboxes\CheckboxesFieldType;
+use Anomaly\CheckboxesFieldType;
 
 /**
  * Class LicenseCheckboxesFieldType
@@ -8,7 +8,7 @@ use Anomaly\Streams\Addon\FieldType\Checkboxes\CheckboxesFieldType;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\Streams\Addon\Distribution\Streams\Addon\FieldType
+ * @package       Anomaly\StreamsDistribution\Addon\FieldType
  */
 class LicenseCheckboxesFieldType extends CheckboxesFieldType
 {

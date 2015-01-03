@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Http\Controller;
+<?php namespace Anomaly\StreamsDistribution\Http\Controller;
 
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 

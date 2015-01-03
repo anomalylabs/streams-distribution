@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Command;
+<?php namespace Anomaly\StreamsDistribution\Command;
 
 use Way\Generators\Compilers\TemplateCompiler;
 use Way\Generators\Generator;

@@ -1,6 +1,6 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Ui\Form;
+<?php namespace Anomaly\StreamsDistribution\Ui\Form;
 
-use Anomaly\Streams\Addon\Distribution\Streams\StreamsDistributionInstaller;
+use Anomaly\StreamsDistribution\StreamsDistributionInstaller;
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormInput;
 
@@ -10,7 +10,7 @@ use Anomaly\Streams\Platform\Ui\Form\FormInput;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\Streams\Addon\Distribution\Streams\Ui\Form
+ * @package       Anomaly\StreamsDistribution\Ui\Form
  */
 class InstallerFormHandler
 {

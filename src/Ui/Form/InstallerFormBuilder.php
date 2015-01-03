@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Ui\Form;
+<?php namespace Anomaly\StreamsDistribution\Ui\Form;
 
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 use cebe\markdown\Markdown;
@@ -16,7 +16,7 @@ class InstallerFormBuilder extends FormBuilder
     {
         app('validator')->extend(
             'valid_database',
-            'Anomaly\Streams\Addon\Distribution\Streams\Ui\Form\InstallerFormValidator@validateDatabase',
+            'Anomaly\StreamsDistribution\Ui\Form\InstallerFormValidator@validateDatabase',
             'distribution.streams::field.database_driver.invalid_database'
         );
 
@@ -24,7 +24,7 @@ class InstallerFormBuilder extends FormBuilder
 
         $this->form->getOptions()->put(
             'handler',
-            'Anomaly\Streams\Addon\Distribution\Streams\Ui\Form\InstallerFormHandler@handle'
+            'Anomaly\StreamsDistribution\Ui\Form\InstallerFormHandler@handle'
         );
 
         $this->setFields(
@@ -35,7 +35,7 @@ class InstallerFormBuilder extends FormBuilder
                 'license'               => [
                     'label'        => 'distribution.streams::field.license.label',
                     'instructions' => 'distribution.streams::field.license.instructions',
-                    'type'         => 'Anomaly\Streams\Addon\Distribution\Streams\Addon\FieldType\LicenseCheckboxesFieldType',
+                    'type'         => 'Anomaly\StreamsDistribution\Addon\FieldType\LicenseCheckboxesFieldType',
                     'rules'        => [
                         'required',
                     ],

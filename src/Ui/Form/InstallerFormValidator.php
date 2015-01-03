@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams\Ui\Form;
+<?php namespace Anomaly\StreamsDistribution\Ui\Form;
 
 class InstallerFormValidator
 {

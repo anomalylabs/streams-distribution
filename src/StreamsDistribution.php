@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\Distribution\Streams;
+<?php namespace Anomaly\StreamsDistribution;
 
 use Anomaly\Streams\Platform\Addon\Distribution\Distribution;
 
