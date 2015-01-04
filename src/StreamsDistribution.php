@@ -5,8 +5,17 @@ use Anomaly\Streams\Platform\Addon\Distribution\Distribution;
 class StreamsDistribution extends Distribution
 {
 
-    public function newServiceProvider()
-    {
-        return new StreamsDistributionServiceProvider($this->app);
-    }
+    /**
+     * The default standard theme.
+     *
+     * @var string
+     */
+    protected $standardTheme = 'Anomaly\StreamsTheme\StreamsTheme';
+
+    /**
+     * The default admin theme.
+     *
+     * @var string
+     */
+    protected $adminTheme = 'Anomaly\StreamsTheme\StreamsTheme';
 }
