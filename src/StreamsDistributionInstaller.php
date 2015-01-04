@@ -65,12 +65,12 @@ class StreamsDistributionInstaller
             'reference' => $parameters['application_reference'],
         ];
 
-        $this->execute('Anomaly\Streams\Platform\Application\Command\InstallApplicationTablesCommand', $data);
+        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateApplicationTablesCommand', $data);
     }
 
     protected function installRevisionsTables()
     {
-        $this->execute('Anomaly\Streams\Platform\Application\Command\InstallRevisionsTablesCommand');
+        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateRevisionsTablesCommand');
     }
 
     protected function installStreamsTables()
