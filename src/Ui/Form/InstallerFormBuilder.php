@@ -2,7 +2,6 @@
 
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
-use cebe\markdown\Markdown;
 
 class InstallerFormBuilder extends FormBuilder
 {
@@ -43,7 +42,7 @@ class InstallerFormBuilder extends FormBuilder
                     'config'       => [
                         'agree'   => 'anomaly.distribution.streams::field.license.agree',
                         'license' => function () {
-                                return (new Markdown())->parse(
+                                return (new \Michelf\Markdown())->transform(
                                     file_get_contents(app('streams.path') . '/LICENSE.md')
                                 );
                             }
