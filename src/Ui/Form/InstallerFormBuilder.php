@@ -1,5 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Ui\Form;
 
+use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 
@@ -84,7 +85,9 @@ class InstallerFormBuilder extends FormBuilder
                     'placeholder'  => 'anomaly.distribution.streams::field.database_name.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.database_name.instructions',
                     'type'         => 'text',
-                    'value'        => 'streams',
+                    'value'        => function (DistributionCollection $distributions) {
+                            return $distributions->active()->getSlug();
+                        },
                     'rules'        => [
                         'required',
                     ],
