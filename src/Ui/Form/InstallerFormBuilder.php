@@ -1,5 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Ui\Form;
 
+use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
 use cebe\markdown\Markdown;
 
@@ -12,7 +13,7 @@ class InstallerFormBuilder extends FormBuilder
         ]
     ];
 
-    protected function initialize()
+    public function __construct(Form $form)
     {
         app('validator')->extend(
             'valid_database',
@@ -20,9 +21,9 @@ class InstallerFormBuilder extends FormBuilder
             'anomaly.distribution.streams::field.database_driver.invalid_database'
         );
 
-        $this->form->getOptions()->put('wrapper_view', 'anomaly.distribution.streams::blank');
+        $form->getOptions()->put('wrapper_view', 'anomaly.distribution.streams::blank');
 
-        $this->form->getOptions()->put(
+        $form->getOptions()->put(
             'handler',
             'Anomaly\StreamsDistribution\Ui\Form\InstallerFormHandler@handle'
         );
@@ -221,6 +222,8 @@ class InstallerFormBuilder extends FormBuilder
                 ],
             ]
         );
+
+        parent::__construct($form);
     }
 }
  
