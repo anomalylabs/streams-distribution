@@ -43,7 +43,7 @@ class InstallerFormBuilder extends FormBuilder
                         'agree'   => 'anomaly.distribution.streams::field.license.agree',
                         'license' => function () {
                                 return (new Markdown())->parse(
-                                    file_get_contents(app('streams.path') . '/LICENSE')
+                                    file_get_contents(app('streams.path') . '/LICENSE.md')
                                 );
                             }
                     ],
