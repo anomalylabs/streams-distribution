@@ -104,7 +104,7 @@ class StreamsDistributionInstaller
         $users = new UserManager();
         $roles = new RoleManager();
 
-        $user = $users->create($credentials, true);
+        $user = $users->create($credentials);
 
         $adminRole = $roles->create(['name' => 'Administrator', 'slug' => 'admin']);
         $userRole  = $roles->create(['name' => 'User', 'slug' => 'user']);
