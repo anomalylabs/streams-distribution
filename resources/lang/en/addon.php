@@ -2,5 +2,5 @@
 
 return [
     'name'        => 'Streams',
-    'description' => 'The streams distribution.',
+    'description' => 'The official Streams base distribution.',
 ];
