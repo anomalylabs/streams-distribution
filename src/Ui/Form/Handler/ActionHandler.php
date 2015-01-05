@@ -20,6 +20,7 @@ class ActionHandler
     {
         return [
             'save' => [
+                'type' => 'success',
                 'text' => 'streams::button.install',
             ]
         ];
