@@ -1,10 +1,10 @@
 <p>
-    {{ license|raw }}
+    {{ field_type.config.license|raw }}
 </p>
 
 <br>
 
 <label class="checkbox-label">
-    <input type="checkbox" value="yes" name="{{ name }}">
-    {{ agree }}
+    <input type="checkbox" value="yes" name="{{ field_type.name }}">
+    {{ trans(field_type.config.agree) }}
 </label>

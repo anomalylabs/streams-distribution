@@ -12,6 +12,7 @@ use Anomaly\CheckboxesFieldType\CheckboxesFieldType;
  */
 class LicenseCheckboxesFieldType extends CheckboxesFieldType
 {
+
     /**
      * The input view.
      *
@@ -35,8 +36,8 @@ class LicenseCheckboxesFieldType extends CheckboxesFieldType
     {
         $data = parent::getInputData();
 
-        $data['agree']   = trans($this->pullConfig('agree'));
-        $data['license'] = value($this->pullConfig('license'));
+        $data['agree']   = trans($this->config->get('agree'));
+        $data['license'] = value($this->config->get('license'));
 
         return $data;
     }
