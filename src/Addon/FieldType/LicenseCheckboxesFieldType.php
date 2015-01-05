@@ -26,20 +26,4 @@ class LicenseCheckboxesFieldType extends CheckboxesFieldType
      * @var string
      */
     protected $wrapperView = 'anomaly.distribution.streams::addon/field_type/license/wrapper';
-
-    /**
-     * Get the view data.
-     *
-     * @return string
-     */
-    public function getInputData()
-    {
-        $data = parent::getInputData();
-
-        $data['agree']   = trans($this->config->get('agree'));
-        $data['license'] = value($this->config->get('license'));
-
-        return $data;
-    }
 }
- 
