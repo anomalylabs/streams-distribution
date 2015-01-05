@@ -5,6 +5,6 @@
 <br>
 
 <label class="checkbox-label">
-    <input type="checkbox" value="yes" name="{{ field_type.name }}">
+    <input type="checkbox" value="yes" name="{{ field_type.getFieldName() }}">
     {{ trans(field_type.config.agree) }}
 </label>
