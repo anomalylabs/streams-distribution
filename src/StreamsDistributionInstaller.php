@@ -16,7 +16,8 @@ class StreamsDistributionInstaller
         $this->generateDatabaseFile($parameters);
 
         $this->installApplicationTables($parameters);
-        $this->installRevisionsTables();
+        $this->installFailedJobsTable();
+        $this->installRevisionsTable();
         $this->installStreamsTables();
         $this->installModulesTable();
 
@@ -68,9 +69,14 @@ class StreamsDistributionInstaller
         $this->execute('Anomaly\Streams\Platform\Application\Command\CreateApplicationTablesCommand', $data);
     }
 
-    protected function installRevisionsTables()
+    protected function installRevisionsTable()
     {
-        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateRevisionsTablesCommand');
+        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateRevisionsTableCommand');
+    }
+
+    protected function installFailedJobsTable()
+    {
+        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateFailedJobsTableCommand');
     }
 
     protected function installStreamsTables()
