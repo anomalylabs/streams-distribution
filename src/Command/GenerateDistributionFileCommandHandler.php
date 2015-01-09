@@ -14,7 +14,7 @@ class GenerateDistributionFileCommandHandler
 
     public function handle()
     {
-        $template = file_get_contents(app('streams.path') . '/resources/assets/generator/distribution.txt');
+        $template = file_get_contents(app('streams.path') . '/resources/assets/generator/distribution.twig');
 
         $file = base_path('config/distribution.php');
 
