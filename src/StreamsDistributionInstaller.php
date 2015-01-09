@@ -1,13 +1,20 @@
 <?php namespace Anomaly\StreamsDistribution;
 
+use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModulesCommand;
+use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTableCommand;
+use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
+use Anomaly\Streams\Platform\Application\Command\CreateFailedJobsTableCommand;
+use Anomaly\Streams\Platform\Application\Command\CreateRevisionsTableCommand;
+use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTablesCommand;
+use Anomaly\StreamsDistribution\Command\GenerateDistributionFileCommand;
 use Anomaly\UsersModule\Role\RoleManager;
 use Anomaly\UsersModule\User\UserManager;
-use Laracasts\Commander\CommanderTrait;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 
 class StreamsDistributionInstaller
 {
 
-    use CommanderTrait;
+    use DispatchesCommands;
 
     public function install(array $parameters)
     {
@@ -31,7 +38,7 @@ class StreamsDistributionInstaller
 
     protected function generateDistributionFile()
     {
-        $this->execute('Anomaly\StreamsDistribution\Command\GenerateDistributionFileCommand');
+        $this->dispatch(new GenerateDistributionFileCommand());
     }
 
     private function generateConfigFile(array $parameters)
@@ -42,7 +49,7 @@ class StreamsDistributionInstaller
             'key'      => app('Illuminate\Support\Str')->random(32)
         ];
 
-        $this->execute('Anomaly\StreamsDistribution\Command\GenerateConfigFileCommand', $data);
+        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateConfigFileCommand', $data);
     }
 
     protected function generateDatabaseFile(array $parameters)
@@ -55,7 +62,7 @@ class StreamsDistributionInstaller
             'password' => $parameters['database_password'],
         ];
 
-        $this->execute('Anomaly\StreamsDistribution\Command\GenerateDatabaseFileCommand', $data);
+        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateDatabaseFileCommand', $data);
     }
 
     protected function installApplicationTables(array $parameters)
@@ -66,37 +73,37 @@ class StreamsDistributionInstaller
             'reference' => $parameters['application_reference'],
         ];
 
-        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateApplicationTablesCommand', $data);
+        $this->dispatchFromArray('Anomaly\Streams\Platform\Application\Command\CreateApplicationTablesCommand', $data);
     }
 
     protected function installRevisionsTable()
     {
-        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateRevisionsTableCommand');
+        $this->dispatch(new CreateRevisionsTableCommand());
     }
 
     protected function installFailedJobsTable()
     {
-        $this->execute('Anomaly\Streams\Platform\Application\Command\CreateFailedJobsTableCommand');
+        $this->dispatch(new CreateFailedJobsTableCommand());
     }
 
     protected function installStreamsTables()
     {
-        $this->execute('Anomaly\Streams\Platform\Stream\Command\InstallStreamsTablesCommand');
+        $this->dispatch(new InstallStreamsTablesCommand());
     }
 
     protected function installModulesTable()
     {
-        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTableCommand');
+        $this->dispatch(new InstallModulesTableCommand());
     }
 
     protected function syncModules()
     {
-        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand');
+        $this->dispatch(new SyncModulesCommand());
     }
 
     protected function installAllModules()
     {
-        $this->execute('Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModulesCommand');
+        $this->dispatch(new InstallAllModulesCommand());
     }
 
     protected function installAdministrator(array $parameters)

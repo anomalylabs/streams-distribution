@@ -2,7 +2,7 @@
 
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
-use Laracasts\Commander\CommanderTrait;
+use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptionsCommand;
 
 /**
  * Class InstallerFormBuilder
@@ -44,7 +44,7 @@ class InstallerFormBuilder extends FormBuilder
 
         $options = $form->getOptions();
 
-        $this->execute('Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptionsCommand', compact('options'));
+        $this->dispatch(new SetFormOptionsCommand($options));
 
         parent::__construct($form);
     }
