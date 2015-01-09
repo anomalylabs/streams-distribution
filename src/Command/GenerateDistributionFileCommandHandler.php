@@ -1,24 +1,20 @@
 <?php namespace Anomaly\StreamsDistribution\Command;
 
 use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
-use Way\Generators\Generator;
 
 class GenerateDistributionFileCommandHandler
 {
 
-    protected $generator;
-
     protected $distributions;
 
-    function __construct(Generator $generator, DistributionCollection $distributions)
+    function __construct(DistributionCollection $distributions)
     {
-        $this->generator     = $generator;
         $this->distributions = $distributions;
     }
 
     public function handle()
     {
-        $template = app('streams.path') . '/resources/assets/generator/distribution.txt';
+        $template = file_get_contents(app('streams.path') . '/resources/assets/generator/distribution.txt');
 
         $file = base_path('config/distribution.php');
 
@@ -29,7 +25,7 @@ class GenerateDistributionFileCommandHandler
         $admin    = $distribution->getAdminTheme();
         $standard = $distribution->getStandardTheme();
 
-        $this->generator->make($template, compact('admin', 'standard'), $file);
+        file_put_contents($file, app('twig.string')->render($template, compact('admin', 'standard')));
     }
 }
  

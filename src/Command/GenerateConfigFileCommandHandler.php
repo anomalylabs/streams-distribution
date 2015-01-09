@@ -1,16 +1,7 @@
 <?php namespace Anomaly\StreamsDistribution\Command;
 
-use Way\Generators\Generator;
-
 class GenerateConfigFileCommandHandler
 {
-
-    protected $generator;
-
-    function __construct(Generator $generator)
-    {
-        $this->generator = $generator;
-    }
 
     public function handle(GenerateConfigFileCommand $command)
     {
@@ -20,13 +11,13 @@ class GenerateConfigFileCommandHandler
 
         $data = compact('key', 'locale', 'timezone');
 
-        $template = app('streams.path') . '/resources/assets/generator/config.txt';
+        $template = file_get_contents(app('streams.path') . '/resources/assets/generator/config.twig');
 
         $file = base_path('config/app.php');
 
         @unlink($file);
 
-        $this->generator->make($template, $data, $file);
+        file_put_contents($file, app('twig.string')->render($template, $data));
     }
 }
  

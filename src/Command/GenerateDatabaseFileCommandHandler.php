@@ -1,17 +1,7 @@
 <?php namespace Anomaly\StreamsDistribution\Command;
 
-use Way\Generators\Compilers\TemplateCompiler;
-use Way\Generators\Generator;
-
 class GenerateDatabaseFileCommandHandler
 {
-
-    protected $generator;
-
-    function __construct(Generator $generator)
-    {
-        $this->generator = $generator;
-    }
 
     public function handle(GenerateDatabaseFileCommand $command)
     {
@@ -21,13 +11,13 @@ class GenerateDatabaseFileCommandHandler
 
         $data = compact('driver', 'connection');
 
-        $template = app('streams.path') . '/resources/assets/generator/database.txt';
+        $template = file_get_contents(app('streams.path') . '/resources/assets/generator/database.twig');
 
         $file = base_path('config/database.php');
 
         @unlink($file);
 
-        $this->generator->make($template, $data, $file);
+        file_put_contents($file, app('twig.string')->render($template, $data));
 
         $this->setDatabaseConfig();
     }
@@ -40,11 +30,13 @@ class GenerateDatabaseFileCommandHandler
         $database = $command->getDatabase();
         $password = $command->getPassword();
 
-        $template = app('streams.path') . '/resources/assets/generator/connections/' . $driver . '.txt';
+        $template = file_get_contents(
+            app('streams.path') . '/resources/assets/generator/connections/' . $driver . '.twig'
+        );
 
         $data = compact('host', 'driver', 'username', 'database', 'password');
 
-        return $this->generator->compile($template, $data, new TemplateCompiler());
+        return app('twig.string')->render($template, $data);
     }
 
     protected function setDatabaseConfig()
