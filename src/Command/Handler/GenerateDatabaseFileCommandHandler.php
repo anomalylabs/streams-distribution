@@ -1,4 +1,6 @@
-<?php namespace Anomaly\StreamsDistribution\Command;
+<?php namespace Anomaly\StreamsDistribution\Command\Handler;
+
+use Anomaly\StreamsDistribution\Command\GenerateDatabaseFileCommand;
 
 class GenerateDatabaseFileCommandHandler
 {

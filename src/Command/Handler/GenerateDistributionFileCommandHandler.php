@@ -1,4 +1,4 @@
-<?php namespace Anomaly\StreamsDistribution\Command;
+<?php namespace Anomaly\StreamsDistribution\Command\Handler;
 
 use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
 

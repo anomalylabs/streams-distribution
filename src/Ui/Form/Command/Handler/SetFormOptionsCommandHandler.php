@@ -1,4 +1,6 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form\Command;
+<?php namespace Anomaly\StreamsDistribution\Ui\Form\Command\Handler;
+
+use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptionsCommand;
 
 /**
  * Class SetFormOptionsCommandHandler
