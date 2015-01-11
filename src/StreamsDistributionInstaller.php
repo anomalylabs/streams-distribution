@@ -73,7 +73,7 @@ class StreamsDistributionInstaller
             'reference' => $parameters['application_reference'],
         ];
 
-        $this->dispatchFromArray('Anomaly\Streams\Platform\Application\Command\CreateApplicationTablesCommand', $data);
+        $this->dispatchFromArray('Anomaly\Streams\Platform\Application\Command\CreateApplicationTables', $data);
     }
 
     protected function installRevisionsTable()
