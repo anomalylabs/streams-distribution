@@ -1,11 +1,11 @@
 <?php namespace Anomaly\StreamsDistribution\Command\Handler;
 
-use Anomaly\StreamsDistribution\Command\GenerateDatabaseFileCommand;
+use Anomaly\StreamsDistribution\Command\GenerateDatabaseFile;
 
-class GenerateDatabaseFileCommandHandler
+class GenerateDatabaseFileHandler
 {
 
-    public function handle(GenerateDatabaseFileCommand $command)
+    public function handle(GenerateDatabaseFile $command)
     {
         $driver = $command->getDriver();
 
@@ -24,7 +24,7 @@ class GenerateDatabaseFileCommandHandler
         $this->setDatabaseConfig();
     }
 
-    protected function compileConnection(GenerateDatabaseFileCommand $command)
+    protected function compileConnection(GenerateDatabaseFile $command)
     {
         $host     = $command->getHost();
         $driver   = $command->getDriver();

@@ -1,12 +1,12 @@
 <?php namespace Anomaly\StreamsDistribution;
 
-use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModulesCommand;
-use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTableCommand;
-use Anomaly\Streams\Platform\Addon\Module\Command\SyncModulesCommand;
-use Anomaly\Streams\Platform\Application\Command\CreateFailedJobsTableCommand;
-use Anomaly\Streams\Platform\Application\Command\CreateRevisionsTableCommand;
-use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTablesCommand;
-use Anomaly\StreamsDistribution\Command\GenerateDistributionFileCommand;
+use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
+use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTable;
+use Anomaly\Streams\Platform\Addon\Module\Command\SyncModules;
+use Anomaly\Streams\Platform\Application\Command\CreateFailedJobsTable;
+use Anomaly\Streams\Platform\Application\Command\CreateRevisionsTable;
+use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTables;
+use Anomaly\StreamsDistribution\Command\GenerateDistributionFile;
 use Anomaly\UsersModule\Role\RoleManager;
 use Anomaly\UsersModule\User\UserManager;
 use Illuminate\Foundation\Bus\DispatchesCommands;
@@ -38,7 +38,7 @@ class StreamsDistributionInstaller
 
     protected function generateDistributionFile()
     {
-        $this->dispatch(new GenerateDistributionFileCommand());
+        $this->dispatch(new GenerateDistributionFile());
     }
 
     private function generateConfigFile(array $parameters)
@@ -78,32 +78,32 @@ class StreamsDistributionInstaller
 
     protected function installRevisionsTable()
     {
-        $this->dispatch(new CreateRevisionsTableCommand());
+        $this->dispatch(new CreateRevisionsTable());
     }
 
     protected function installFailedJobsTable()
     {
-        $this->dispatch(new CreateFailedJobsTableCommand());
+        $this->dispatch(new CreateFailedJobsTable());
     }
 
     protected function installStreamsTables()
     {
-        $this->dispatch(new InstallStreamsTablesCommand());
+        $this->dispatch(new InstallStreamsTables());
     }
 
     protected function installModulesTable()
     {
-        $this->dispatch(new InstallModulesTableCommand());
+        $this->dispatch(new InstallModulesTable());
     }
 
     protected function syncModules()
     {
-        $this->dispatch(new SyncModulesCommand());
+        $this->dispatch(new SyncModules());
     }
 
     protected function installAllModules()
     {
-        $this->dispatch(new InstallAllModulesCommand());
+        $this->dispatch(new InstallAllModules());
     }
 
     protected function installAdministrator(array $parameters)

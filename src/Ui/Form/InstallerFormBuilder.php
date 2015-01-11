@@ -2,7 +2,7 @@
 
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
-use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptionsCommand;
+use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptions;
 
 /**
  * Class InstallerFormBuilder
@@ -44,7 +44,7 @@ class InstallerFormBuilder extends FormBuilder
 
         $options = $form->getOptions();
 
-        $this->dispatch(new SetFormOptionsCommand($options));
+        $this->dispatch(new SetFormOptions($options));
 
         parent::__construct($form);
     }

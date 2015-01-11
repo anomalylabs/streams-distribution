@@ -1,24 +1,24 @@
 <?php namespace Anomaly\StreamsDistribution\Ui\Form\Command\Handler;
 
-use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptionsCommand;
+use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptions;
 
 /**
- * Class SetFormOptionsCommandHandler
+ * Class SetFormOptionsHandler
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\StreamsDistribution\Ui\Form\Command
  */
-class SetFormOptionsCommandHandler
+class SetFormOptionsHandler
 {
 
     /**
      * Handle the command.
      *
-     * @param SetFormOptionsCommand $command
+     * @param SetFormOptions $command
      */
-    public function handle(SetFormOptionsCommand $command)
+    public function handle(SetFormOptions $command)
     {
         $options = $command->getOptions();
 

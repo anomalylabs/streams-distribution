@@ -1,6 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Command;
 
-class GenerateDatabaseFileCommand
+class GenerateDatabaseFile
 {
 
     protected $driver;

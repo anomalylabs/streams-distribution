@@ -3,14 +3,14 @@
 use Illuminate\Support\Collection;
 
 /**
- * Class SetFormOptionsCommand
+ * Class SetFormOptions
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\StreamsDistribution\Ui\Form\Command
  */
-class SetFormOptionsCommand
+class SetFormOptions
 {
 
     /**
@@ -21,7 +21,7 @@ class SetFormOptionsCommand
     protected $options;
 
     /**
-     * Create a new SetFormOptionsCommand instance.
+     * Create a new SetFormOptions instance.
      *
      * @param Collection $options
      */

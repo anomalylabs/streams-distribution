@@ -2,7 +2,7 @@
 
 use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
 
-class GenerateDistributionFileCommandHandler
+class GenerateDistributionFileHandler
 {
 
     protected $distributions;

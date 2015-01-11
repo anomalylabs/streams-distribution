@@ -1,6 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Command;
 
-class GenerateConfigFileCommand
+class GenerateConfigFile
 {
     protected $key;
 

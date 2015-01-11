@@ -1,11 +1,11 @@
 <?php namespace Anomaly\StreamsDistribution\Command\Handler;
 
-use Anomaly\StreamsDistribution\Command\GenerateConfigFileCommand;
+use Anomaly\StreamsDistribution\Command\GenerateConfigFile;
 
-class GenerateConfigFileCommandHandler
+class GenerateConfigFileHandler
 {
 
-    public function handle(GenerateConfigFileCommand $command)
+    public function handle(GenerateConfigFile $command)
     {
         $key      = $command->getKey();
         $locale   = $command->getLocale();
