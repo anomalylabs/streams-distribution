@@ -49,7 +49,7 @@ class StreamsDistributionInstaller
             'key'      => app('Illuminate\Support\Str')->random(32)
         ];
 
-        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateConfigFileCommand', $data);
+        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateConfigFile', $data);
     }
 
     protected function generateDatabaseFile(array $parameters)
@@ -62,7 +62,7 @@ class StreamsDistributionInstaller
             'password' => $parameters['database_password'],
         ];
 
-        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateDatabaseFileCommand', $data);
+        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateDatabaseFile', $data);
     }
 
     protected function installApplicationTables(array $parameters)
