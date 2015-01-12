@@ -3,9 +3,9 @@
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTable;
 use Anomaly\Streams\Platform\Addon\Module\Command\SyncModules;
-use Anomaly\Streams\Platform\Application\Command\CreateFailedJobsTable;
-use Anomaly\Streams\Platform\Application\Command\CreateRevisionsTable;
 use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTables;
+use Anomaly\StreamsDistribution\Command\CreateFailedJobsTable;
+use Anomaly\StreamsDistribution\Command\CreateRevisionsTable;
 use Anomaly\StreamsDistribution\Command\GenerateDistributionFile;
 use Anomaly\UsersModule\Role\RoleManager;
 use Anomaly\UsersModule\User\UserManager;
@@ -73,7 +73,7 @@ class StreamsDistributionInstaller
             'reference' => $parameters['application_reference'],
         ];
 
-        $this->dispatchFromArray('Anomaly\Streams\Platform\Application\Command\CreateApplicationTables', $data);
+        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\CreateApplicationTables', $data);
     }
 
     protected function installRevisionsTable()
