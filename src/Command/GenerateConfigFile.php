@@ -2,6 +2,7 @@
 
 class GenerateConfigFile
 {
+
     protected $key;
 
     protected $locale;

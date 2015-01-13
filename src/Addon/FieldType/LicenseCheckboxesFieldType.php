@@ -26,4 +26,5 @@ class LicenseCheckboxesFieldType extends CheckboxesFieldType
      * @var string
      */
     protected $wrapperView = 'anomaly.distribution.streams::addon/field_type/license/wrapper';
+
 }

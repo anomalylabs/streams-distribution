@@ -12,6 +12,7 @@ use Illuminate\Support\ServiceProvider;
  */
 class StreamsDistributionServiceProvider extends ServiceProvider
 {
+
     /**
      * Register the service.
      */

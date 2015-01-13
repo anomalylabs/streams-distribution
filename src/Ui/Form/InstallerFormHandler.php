@@ -1,8 +1,8 @@
 <?php namespace Anomaly\StreamsDistribution\Ui\Form;
 
-use Anomaly\StreamsDistribution\StreamsDistributionInstaller;
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormInput;
+use Anomaly\StreamsDistribution\StreamsDistributionInstaller;
 
 /**
  * Class InstallerFormHandler

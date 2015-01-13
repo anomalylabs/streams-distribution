@@ -2,6 +2,7 @@
 
 class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
+
     /**
      * Map the distribution routes.
      */

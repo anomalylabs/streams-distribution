@@ -2,7 +2,12 @@
     "name": "anomaly/streams-distribution",
     "type": "streams-addon",
     "description": "The official Streams base distribution.",
-    "keywords": ["streams-addon", "streams", "distribution", "laravel"],
+    "keywords": [
+        "streams-addon",
+        "streams",
+        "distribution",
+        "laravel"
+    ],
     "homepage": "http://anomaly.is/",
     "license": "MIT",
     "authors": [

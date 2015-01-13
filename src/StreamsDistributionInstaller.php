@@ -31,6 +31,8 @@ class StreamsDistributionInstaller
 
         $this->installAdministrator($parameters);
 
+        die('Test');
+
         return true;
     }
 

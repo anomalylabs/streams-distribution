@@ -26,4 +26,5 @@ class StreamsDistribution extends Distribution
      * @var string
      */
     protected $adminTheme = 'Anomaly\StreamsTheme\StreamsTheme';
+
 }
