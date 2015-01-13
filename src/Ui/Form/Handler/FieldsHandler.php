@@ -3,7 +3,7 @@
 use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
 
 /**
- * Class FieldHandler
+ * Class FieldsHandler
  *
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
