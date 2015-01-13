@@ -34,7 +34,7 @@ class SetFormOptionsHandler
                     ]
                 ],
                 [
-                    'title'  => 'anomaly.distribution.streams::admin.database',
+                    'title'  => 'anomaly.distribution.streams::installer.database',
                     'fields' => [
                         'database_driver',
                         'database_host',
@@ -44,7 +44,7 @@ class SetFormOptionsHandler
                     ]
                 ],
                 [
-                    'title'  => 'anomaly.distribution.streams::admin.administrator',
+                    'title'  => 'anomaly.distribution.streams::installer.administrator',
                     'fields' => [
                         'admin_username',
                         'admin_email',
@@ -52,7 +52,7 @@ class SetFormOptionsHandler
                     ]
                 ],
                 [
-                    'title'  => 'anomaly.distribution.streams::admin.application',
+                    'title'  => 'anomaly.distribution.streams::installer.application',
                     'fields' => [
                         'application_name',
                         'application_reference',

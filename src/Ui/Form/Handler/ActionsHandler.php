@@ -21,7 +21,7 @@ class ActionsHandler
         return [
             'save' => [
                 'type' => 'success',
-                'text' => 'streams::button.install',
+                'text' => 'anomaly.distribution.streams::button.install',
             ]
         ];
     }
