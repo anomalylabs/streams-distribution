@@ -25,7 +25,6 @@ class StreamsDistributionInstaller
         $this->installFailedJobsTable();
         $this->installStreamsTables();
         $this->installModulesTable();
-
         $this->syncModules();
         $this->installAllModules();
 
