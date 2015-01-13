@@ -20,14 +20,14 @@ class InstallerFormBuilder extends FormBuilder
      *
      * @var string
      */
-    protected $fields = 'Anomaly\StreamsDistribution\Ui\Form\Handler\FieldHandler@handle';
+    protected $fields = 'Anomaly\StreamsDistribution\Ui\Form\Handler\FieldsHandler@handle';
 
     /**
      * The form actions.
      *
      * @var string
      */
-    protected $actions = 'Anomaly\StreamsDistribution\Ui\Form\Handler\ActionHandler@handle';
+    protected $actions = 'Anomaly\StreamsDistribution\Ui\Form\Handler\ActionsHandler@handle';
 
     /**
      * Create a new InstallerFormBuilder instance.
