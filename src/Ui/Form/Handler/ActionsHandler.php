@@ -8,7 +8,7 @@
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\StreamsDistribution\Ui\Form\Handler
  */
-class ActionHandler
+class ActionsHandler
 {
 
     /**

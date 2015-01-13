@@ -10,7 +10,7 @@ use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\StreamsDistribution\Ui\Form\Handler
  */
-class FieldHandler
+class FieldsHandler
 {
 
     /**
@@ -34,10 +34,10 @@ class FieldHandler
                 'config'       => [
                     'agree'   => 'anomaly.distribution.streams::field.license.agree',
                     'license' => function () {
-                            return (new \Michelf\Markdown())->transform(
-                                file_get_contents(app('streams.path') . '/LICENSE.md')
-                            );
-                        }
+                        return (new \Michelf\Markdown())->transform(
+                            file_get_contents(app('streams.path') . '/LICENSE.md')
+                        );
+                    }
                 ],
             ],
             /**
@@ -77,8 +77,8 @@ class FieldHandler
                 'instructions' => 'anomaly.distribution.streams::field.database_name.instructions',
                 'type'         => 'text',
                 'value'        => function (DistributionCollection $distributions) {
-                        return $distributions->active()->getSlug();
-                    },
+                    return $distributions->active()->getSlug();
+                },
                 'rules'        => [
                     'required',
                 ],
@@ -180,15 +180,15 @@ class FieldHandler
                 'config'       => [
                     'options' => function () {
 
-                            $options = [];
+                        $options = [];
 
-                            foreach (config('streams::config.available_locales') as $locale) {
+                        foreach (config('streams::config.available_locales') as $locale) {
 
-                                $options[$locale] = trans('streams::language.' . $locale);
-                            }
-
-                            return $options;
+                            $options[$locale] = trans('streams::language.' . $locale);
                         }
+
+                        return $options;
+                    }
                 ],
             ],
             'application_timezone'  => [
@@ -202,15 +202,15 @@ class FieldHandler
                 'config'       => [
                     'options' => function () {
 
-                            $options = [];
+                        $options = [];
 
-                            foreach (timezone_identifiers_list() as $timezone) {
+                        foreach (timezone_identifiers_list() as $timezone) {
 
-                                $options[$timezone] = $timezone;
-                            }
-
-                            return $options;
+                            $options[$timezone] = $timezone;
                         }
+
+                        return $options;
+                    }
                 ],
             ],
         ];
