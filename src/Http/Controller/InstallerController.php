@@ -1,5 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Http\Controller;
 
+use Anomaly\Streams\Platform\Application\Application;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 use Anomaly\StreamsDistribution\Ui\Form\InstallerFormBuilder;
 
@@ -20,8 +21,12 @@ class InstallerController extends PublicController
      * @param InstallerFormBuilder $form
      * @return \Illuminate\View\View|\Symfony\Component\HttpFoundation\Response
      */
-    public function index(InstallerFormBuilder $form)
+    public function index(InstallerFormBuilder $form, Application $application)
     {
+        if ($application->isInstalled()) {
+            throw new \Exception("Please delete the config/distribution.php file before installing.");
+        }
+
         return $form->render();
     }
 
