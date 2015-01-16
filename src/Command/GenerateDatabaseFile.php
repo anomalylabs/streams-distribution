@@ -13,7 +13,7 @@ class GenerateDatabaseFile
 
     protected $password;
 
-    function __construct($driver, $host, $database, $username, $password)
+    function __construct($driver, $host, $database, $username, $password = null)
     {
         $this->host     = $host;
         $this->driver   = $driver;
