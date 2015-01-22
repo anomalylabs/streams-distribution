@@ -1,5 +1,8 @@
 <?php namespace Anomaly\StreamsDistribution;
 
+use Anomaly\Streams\Platform\Addon\Extension\Command\InstallAllExtensions;
+use Anomaly\Streams\Platform\Addon\Extension\Command\InstallExtensionsTable;
+use Anomaly\Streams\Platform\Addon\Extension\Command\SyncExtensions;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTable;
 use Anomaly\Streams\Platform\Addon\Module\Command\SyncModules;
@@ -23,10 +26,13 @@ class StreamsDistributionInstaller
 
         $this->installApplicationTables($parameters);
         $this->installFailedJobsTable();
+        $this->installExtensionsTable();
         $this->installStreamsTables();
         $this->installModulesTable();
         $this->syncModules();
+        $this->syncExtensions();
         $this->installAllModules();
+        $this->installAllExtensions();
 
         $this->installAdministrator($parameters);
 
@@ -88,6 +94,11 @@ class StreamsDistributionInstaller
         $this->dispatch(new InstallModulesTable());
     }
 
+    protected function installExtensionsTable()
+    {
+        $this->dispatch(new InstallExtensionsTable());
+    }
+
     protected function syncModules()
     {
         $this->dispatch(new SyncModules());
@@ -96,6 +107,16 @@ class StreamsDistributionInstaller
     protected function installAllModules()
     {
         $this->dispatch(new InstallAllModules());
+    }
+
+    protected function syncExtensions()
+    {
+        $this->dispatch(new SyncExtensions());
+    }
+
+    protected function installAllExtensions()
+    {
+        $this->dispatch(new InstallAllExtensions());
     }
 
     protected function installAdministrator(array $parameters)
