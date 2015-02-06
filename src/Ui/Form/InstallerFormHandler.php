@@ -1,7 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Ui\Form;
 
 use Anomaly\Streams\Platform\Ui\Form\Form;
-use Anomaly\Streams\Platform\Ui\Form\FormInput;
 use Anomaly\StreamsDistribution\StreamsDistributionInstaller;
 
 /**
@@ -19,12 +18,11 @@ class InstallerFormHandler
      * Handle the installer form.
      *
      * @param Form                         $form
-     * @param FormInput                    $input
      * @param StreamsDistributionInstaller $distributionInstaller
      */
-    public function handle(Form $form, FormInput $input, StreamsDistributionInstaller $distributionInstaller)
+    public function handle(Form $form, StreamsDistributionInstaller $distributionInstaller)
     {
-        $distributionInstaller->install($input->get($form));
+        $distributionInstaller->install($_POST);
 
         $form->setResponse(redirect('/'));
     }
