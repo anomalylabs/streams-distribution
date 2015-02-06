@@ -10,11 +10,11 @@ class InstallerFormValidator
         app('config')->set(
             'database.connections.install',
             [
-                'driver'    => $input['database_driver_en'],
-                'host'      => $input['database_host_en'],
-                'database'  => $input['database_name_en'],
-                'username'  => $input['database_username_en'],
-                'password'  => $input['database_password_en'],
+                'driver'    => $input['database_driver'],
+                'host'      => $input['database_host'],
+                'database'  => $input['database_name'],
+                'username'  => $input['database_username'],
+                'password'  => $input['database_password'],
                 'charset'   => 'utf8',
                 'collation' => 'utf8_unicode_ci',
                 'prefix'    => '',
