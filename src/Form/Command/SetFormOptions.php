@@ -1,4 +1,4 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form\Command;
+<?php namespace Anomaly\StreamsDistribution\Form\Command;
 
 use Illuminate\Support\Collection;
 
@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\StreamsDistribution\Ui\Form\Command
+ * @package       Anomaly\StreamsDistribution\Form\Command
  */
 class SetFormOptions
 {

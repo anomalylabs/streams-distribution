@@ -1,4 +1,4 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form\Handler;
+<?php namespace Anomaly\StreamsDistribution\Form\Handler;
 
 use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
 
@@ -8,7 +8,7 @@ use Anomaly\Streams\Platform\Addon\Distribution\DistributionCollection;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\StreamsDistribution\Ui\Form\Handler
+ * @package       Anomaly\StreamsDistribution\Form\Handler
  */
 class FieldsHandler
 {
@@ -54,7 +54,7 @@ class FieldsHandler
                 ],
                 'validators'   => [
                     'valid_database' => [
-                        'handler' => 'Anomaly\StreamsDistribution\Ui\Form\Validation\ValidDatabase@validate',
+                        'handler' => 'Anomaly\StreamsDistribution\Form\Validation\ValidDatabase@validate',
                         'message' => 'anomaly.distribution.streams::message.database_error'
                     ]
                 ],

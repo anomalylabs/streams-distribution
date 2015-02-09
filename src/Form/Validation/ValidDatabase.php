@@ -1,4 +1,4 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form\Validation;
+<?php namespace Anomaly\StreamsDistribution\Form\Validation;
 
 /**
  * Class ValidDatabase
@@ -6,7 +6,7 @@
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\StreamsDistribution\Ui\Form
+ * @package       Anomaly\StreamsDistribution\Form
  */
 class ValidDatabase
 {

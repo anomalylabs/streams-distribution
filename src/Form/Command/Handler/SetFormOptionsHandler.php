@@ -1,6 +1,6 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form\Command\Handler;
+<?php namespace Anomaly\StreamsDistribution\Form\Command\Handler;
 
-use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptions;
+use Anomaly\StreamsDistribution\Form\Command\SetFormOptions;
 
 /**
  * Class SetFormOptionsHandler
@@ -8,7 +8,7 @@ use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptions;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\StreamsDistribution\Ui\Form\Command
+ * @package       Anomaly\StreamsDistribution\Form\Command
  */
 class SetFormOptionsHandler
 {
@@ -23,7 +23,7 @@ class SetFormOptionsHandler
         $options = $command->getOptions();
 
         $options->put('wrapper_view', 'anomaly.distribution.streams::blank');
-        $options->put('handler', 'Anomaly\StreamsDistribution\Ui\Form\InstallerFormHandler@handle');
+        $options->put('handler', 'Anomaly\StreamsDistribution\Form\InstallerFormHandler@handle');
 
         $options->put(
             'sections',

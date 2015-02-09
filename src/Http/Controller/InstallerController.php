@@ -2,7 +2,7 @@
 
 use Anomaly\Streams\Platform\Application\Application;
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
-use Anomaly\StreamsDistribution\Ui\Form\InstallerFormBuilder;
+use Anomaly\StreamsDistribution\Form\InstallerFormBuilder;
 
 /**
  * Class InstallerController

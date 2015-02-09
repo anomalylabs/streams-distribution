@@ -1,4 +1,4 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form\Handler;
+<?php namespace Anomaly\StreamsDistribution\Form\Handler;
 
 /**
  * Class ActionsHandler
@@ -6,7 +6,7 @@
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\StreamsDistribution\Ui\Form\Handler
+ * @package       Anomaly\StreamsDistribution\Form\Handler
  */
 class ActionsHandler
 {

@@ -1,4 +1,4 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form;
+<?php namespace Anomaly\StreamsDistribution\Form;
 
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\StreamsDistribution\StreamsDistributionInstaller;
@@ -9,7 +9,7 @@ use Anomaly\StreamsDistribution\StreamsDistributionInstaller;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\StreamsDistribution\Ui\Form
+ * @package       Anomaly\StreamsDistribution\Form
  */
 class InstallerFormHandler
 {

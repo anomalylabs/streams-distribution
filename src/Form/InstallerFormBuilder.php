@@ -1,8 +1,8 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form;
+<?php namespace Anomaly\StreamsDistribution\Form;
 
 use Anomaly\Streams\Platform\Ui\Form\Form;
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
-use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptions;
+use Anomaly\StreamsDistribution\Form\Command\SetFormOptions;
 
 /**
  * Class InstallerFormBuilder
@@ -10,7 +10,7 @@ use Anomaly\StreamsDistribution\Ui\Form\Command\SetFormOptions;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\StreamsDistribution\Ui\Form
+ * @package       Anomaly\StreamsDistribution\Form
  */
 class InstallerFormBuilder extends FormBuilder
 {
@@ -20,14 +20,14 @@ class InstallerFormBuilder extends FormBuilder
      *
      * @var string
      */
-    protected $fields = 'Anomaly\StreamsDistribution\Ui\Form\Handler\FieldsHandler@handle';
+    protected $fields = 'Anomaly\StreamsDistribution\Form\Handler\FieldsHandler@handle';
 
     /**
      * The form actions.
      *
      * @var string
      */
-    protected $actions = 'Anomaly\StreamsDistribution\Ui\Form\Handler\ActionsHandler@handle';
+    protected $actions = 'Anomaly\StreamsDistribution\Form\Handler\ActionsHandler@handle';
 
     /**
      * Create a new InstallerFormBuilder instance.
