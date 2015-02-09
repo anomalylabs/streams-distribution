@@ -36,12 +36,6 @@ class InstallerFormBuilder extends FormBuilder
      */
     public function __construct(Form $form)
     {
-        app('validator')->extend(
-            'valid_database',
-            'Anomaly\StreamsDistribution\Ui\Form\InstallerFormValidator@validateDatabase',
-            'anomaly.distribution.streams::field.database_driver.invalid_database'
-        );
-
         $options = $form->getOptions();
 
         $this->dispatch(new SetFormOptions($options));

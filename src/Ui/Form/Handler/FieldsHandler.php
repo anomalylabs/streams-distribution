@@ -52,6 +52,12 @@ class FieldsHandler
                     'required',
                     'valid_database',
                 ],
+                'validators'   => [
+                    'valid_database' => [
+                        'handler' => 'Anomaly\StreamsDistribution\Ui\Form\Validation\ValidDatabase@validate',
+                        'message' => 'anomaly.distribution.streams::message.database_error'
+                    ]
+                ],
                 'config'       => [
                     'options' => [
                         'mysql'    => 'MySQL',

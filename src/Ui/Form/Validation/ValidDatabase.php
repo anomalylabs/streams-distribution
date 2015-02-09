@@ -1,9 +1,22 @@
-<?php namespace Anomaly\StreamsDistribution\Ui\Form;
+<?php namespace Anomaly\StreamsDistribution\Ui\Form\Validation;
 
-class InstallerFormValidator
+/**
+ * Class ValidDatabase
+ *
+ * @link          http://anomaly.is/streams-platform
+ * @author        AnomalyLabs, Inc. <hello@anomaly.is>
+ * @author        Ryan Thompson <ryan@anomaly.is>
+ * @package       Anomaly\StreamsDistribution\Ui\Form
+ */
+class ValidDatabase
 {
 
-    public function validateDatabase()
+    /**
+     * Validate the input.
+     *
+     * @return bool
+     */
+    public function validate()
     {
         $input = app('request')->all();
 
@@ -22,7 +35,6 @@ class InstallerFormValidator
         );
 
         try {
-
             app('db')->connection('install');
         } catch (\Exception $e) {
 
