@@ -30,7 +30,7 @@ class ValidDatabase
                 'password'  => $input['database_password'],
                 'charset'   => 'utf8',
                 'collation' => 'utf8_unicode_ci',
-                'prefix'    => '',
+                'prefix'    => ''
             ]
         );
 
