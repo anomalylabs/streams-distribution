@@ -16,18 +16,16 @@ class InstallerFormBuilder extends FormBuilder
 {
 
     /**
-     * The form fields.
-     *
-     * @var string
-     */
-    protected $fields = 'Anomaly\StreamsDistribution\Form\Handler\FieldsHandler@handle';
-
-    /**
      * The form actions.
      *
-     * @var string
+     * @var array
      */
-    protected $actions = 'Anomaly\StreamsDistribution\Form\Handler\ActionsHandler@handle';
+    protected $actions = [
+        'save' => [
+            'type' => 'success',
+            'text' => 'anomaly.distribution.streams::button.install',
+        ]
+    ];
 
     /**
      * Create a new InstallerFormBuilder instance.
@@ -36,9 +34,7 @@ class InstallerFormBuilder extends FormBuilder
      */
     public function __construct(Form $form)
     {
-        $options = $form->getOptions();
-
-        $this->dispatch(new SetFormOptions($options));
+        $this->dispatch(new SetFormOptions($form->getOptions()));
 
         parent::__construct($form);
     }
