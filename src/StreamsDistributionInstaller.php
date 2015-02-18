@@ -18,6 +18,16 @@ class StreamsDistributionInstaller
 
     use DispatchesCommands;
 
+    protected $roles;
+
+    protected $users;
+
+    function __construct(RoleManager $roles, UserManager $users)
+    {
+        $this->roles = $roles;
+        $this->users = $users;
+    }
+
     public function install(array $parameters)
     {
         $this->generateDistributionFile();
@@ -127,13 +137,12 @@ class StreamsDistributionInstaller
             'password' => $parameters['admin_password']
         ];
 
-        $users = new UserManager();
-        $roles = new RoleManager();
+        $user = $this->users->create($credentials, true);
 
-        $user = $users->create($credentials);
+        $this->roles->create(['name' => 'Administrator', 'slug' => 'admin']);
+        $this->roles->create(['name' => 'User', 'slug' => 'user']);
 
-        $adminRole = $roles->create(['name' => 'Administrator', 'slug' => 'admin']);
-        $userRole  = $roles->create(['name' => 'User', 'slug' => 'user']);
+        $this->users->addUserToGroups($user, ['admin']);
     }
 }
  
