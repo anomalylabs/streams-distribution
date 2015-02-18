@@ -139,10 +139,10 @@ class StreamsDistributionInstaller
 
         $user = $this->users->create($credentials, true);
 
-        $this->roles->create(['name' => 'Administrator', 'slug' => 'admin']);
+        $admin = $this->roles->create(['name' => 'Administrator', 'slug' => 'admin']);
         $this->roles->create(['name' => 'User', 'slug' => 'user']);
 
-        $this->users->addUserToGroups($user, ['admin']);
+        $this->users->attachRole($user, $admin);
     }
 }
  
