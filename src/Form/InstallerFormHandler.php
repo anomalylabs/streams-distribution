@@ -24,7 +24,7 @@ class InstallerFormHandler
     {
         $distributionInstaller->install($_POST);
 
-        $form->setResponse(redirect('/'));
+        $form->setResponse(redirect('installer/complete'));
     }
 }
  
