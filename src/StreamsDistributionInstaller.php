@@ -6,6 +6,7 @@ use Anomaly\Streams\Platform\Addon\Extension\Command\SyncExtensions;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTable;
 use Anomaly\Streams\Platform\Addon\Module\Command\SyncModules;
+use Anomaly\Streams\Platform\Application\Command\GenerateEnvironmentFile;
 use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTables;
 use Anomaly\StreamsDistribution\Command\CreateFailedJobsTable;
 use Anomaly\StreamsDistribution\Command\GenerateDistributionFile;
@@ -30,9 +31,7 @@ class StreamsDistributionInstaller
 
     public function install(array $parameters)
     {
-        $this->generateDistributionFile();
-        $this->generateConfigFile($parameters);
-        $this->generateDatabaseFile($parameters);
+        $this->generateEnvironmentFile($parameters);
 
         $this->installApplicationTables($parameters);
         $this->installFailedJobsTable();
@@ -49,33 +48,29 @@ class StreamsDistributionInstaller
         return true;
     }
 
-    protected function generateDistributionFile()
+    /**
+     * @param array $parameters
+     */
+    protected function generateEnvironmentFile(array $parameters)
     {
-        $this->dispatch(new GenerateDistributionFile());
-    }
+        $distribution = $this->distributions->active();
 
-    private function generateConfigFile(array $parameters)
-    {
-        $data = [
-            'locale'   => $parameters['application_locale'],
-            'timezone' => $parameters['application_timezone'],
-            'key'      => app('Illuminate\Support\Str')->random(32)
+        $variables = [
+            'APP_KEY'        => app('Illuminate\Support\Str')->random(32),
+            'DB_DRIVER'      => $parameters['database_driver'],
+            'DB_HOST'        => $parameters['database_host'],
+            'DB_DATABASE'    => $parameters['database_name'],
+            'DB_USERNAME'    => $parameters['database_username'],
+            'DB_PASSWORD'    => $parameters['database_password'],
+            'CACHE_DRIVER'   => 'file', // @todo - add fields for this?
+            'SESSION_DRIVER' => 'file', // @todo - add fields for this?
+            'ADMIN_THEME'    => $distribution->getAdminTheme(),
+            'STANDARD_THEME' => $distribution->getStandardTheme(),
+            'LOCALE'         => $parameters['application_locale'],
+            'TIMEZONE'       => $parameters['application_timezone'],
         ];
 
-        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateConfigFile', $data);
-    }
-
-    protected function generateDatabaseFile(array $parameters)
-    {
-        $data = [
-            'host'     => $parameters['database_host'],
-            'database' => $parameters['database_name'],
-            'driver'   => $parameters['database_driver'],
-            'username' => $parameters['database_username'],
-            'password' => $parameters['database_password'],
-        ];
-
-        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\GenerateDatabaseFile', $data);
+        $this->dispatch(new GenerateEnvironmentFile($variables));
     }
 
     protected function installApplicationTables(array $parameters)
@@ -137,7 +132,7 @@ class StreamsDistributionInstaller
             'password' => $parameters['admin_password']
         ];
 
-        $user  = $this->users->create($credentials, true);
+        $user = $this->users->create($credentials, true);
         $admin = $this->roles->create(
             [
                 'name' => 'Administrator',
