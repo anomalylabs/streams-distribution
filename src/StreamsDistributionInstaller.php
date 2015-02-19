@@ -137,9 +137,14 @@ class StreamsDistributionInstaller
             'password' => $parameters['admin_password']
         ];
 
-        $user = $this->users->create($credentials, true);
+        $user  = $this->users->create($credentials, true);
+        $admin = $this->roles->create(
+            [
+                'name' => 'Administrator',
+                'slug' => 'admin'
+            ]
+        );
 
-        $admin = $this->roles->create(['name' => 'Administrator', 'slug' => 'admin']);
         $this->roles->create(['name' => 'User', 'slug' => 'user']);
 
         $this->users->attachRole($user, $admin);
