@@ -24,7 +24,7 @@ class InstallerController extends PublicController
     public function index(InstallerFormBuilder $form, Application $application)
     {
         if ($application->isInstalled()) {
-            throw new \Exception("Please delete the config/distribution.php file before installing.");
+            throw new \Exception("Please delete the .env file before installing.");
         }
 
         return $form->render();
