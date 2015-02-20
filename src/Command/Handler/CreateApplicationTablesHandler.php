@@ -2,6 +2,7 @@
 
 use Anomaly\Streams\Platform\Application\Application;
 use Anomaly\StreamsDistribution\Command\CreateApplicationTables;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 
@@ -21,7 +22,7 @@ class CreateApplicationTablesHandler
      *
      * @var mixed
      */
-    protected $db;
+    protected $database;
 
     /**
      * The schema builder.
@@ -40,13 +41,13 @@ class CreateApplicationTablesHandler
     /**
      * Create a new CreateApplicationTablesHandler instance.
      *
-     * @param Application $application
+     * @param Application     $application
+     * @param DatabaseManager $database
      */
-    public function __construct(Application $application)
+    public function __construct(Application $application, DatabaseManager $database)
     {
-        $this->db     = app('db');
-        $this->schema = app('db')->connection()->getSchemaBuilder();
-
+        $this->database = $database;
+        $this->schema = $this->database->connection()->getSchemaBuilder();
         $this->application = $application;
     }
 
@@ -123,7 +124,7 @@ class CreateApplicationTablesHandler
             'enabled'   => true,
         ];
 
-        $this->db->table('applications')->insert($data);
+        $this->database->table('applications')->insert($data);
 
         $this->application->locate();
     }
