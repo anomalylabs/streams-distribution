@@ -10,6 +10,7 @@ use Anomaly\Streams\Platform\Application\Command\GenerateEnvironmentFile;
 use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTables;
 use Anomaly\StreamsDistribution\Command\CreateFailedJobsTable;
 use Anomaly\StreamsDistribution\Command\GenerateDistributionFile;
+use Anomaly\StreamsDistribution\Command\GetEnvironmentVariables;
 use Anomaly\UsersModule\Role\RoleManager;
 use Anomaly\UsersModule\User\UserManager;
 use Illuminate\Foundation\Bus\DispatchesCommands;
@@ -53,23 +54,7 @@ class StreamsDistributionInstaller
      */
     protected function generateEnvironmentFile(array $parameters)
     {
-        $distribution = $this->distributions->active();
-
-        $variables = [
-            'APP_KEY'        => app('Illuminate\Support\Str')->random(32),
-            'DB_DRIVER'      => $parameters['database_driver'],
-            'DB_HOST'        => $parameters['database_host'],
-            'DB_DATABASE'    => $parameters['database_name'],
-            'DB_USERNAME'    => $parameters['database_username'],
-            'DB_PASSWORD'    => $parameters['database_password'],
-            'CACHE_DRIVER'   => 'file', // @todo - add fields for this?
-            'SESSION_DRIVER' => 'file', // @todo - add fields for this?
-            'ADMIN_THEME'    => $distribution->getAdminTheme(),
-            'STANDARD_THEME' => $distribution->getStandardTheme(),
-            'LOCALE'         => $parameters['application_locale'],
-            'TIMEZONE'       => $parameters['application_timezone'],
-        ];
-
+        $variables = $this->dispatch(new GetEnvironmentVariables($parameters));
         $this->dispatch(new GenerateEnvironmentFile($variables));
     }
 
