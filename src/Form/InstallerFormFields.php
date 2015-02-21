@@ -189,7 +189,7 @@ class InstallerFormFields
 
                             $options = [];
 
-                            foreach (config('streams::config.available_locales') as $locale) {
+                            foreach (config('streams.available_locales') as $locale) {
 
                                 $options[$locale] = trans('streams::language.' . $locale);
                             }
