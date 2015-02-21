@@ -32,7 +32,9 @@ class StreamsDistributionServiceProvider extends ServiceProvider
      */
     protected function checkInstallation()
     {
-        if (app('request')->segment(1) !== 'installer' && !INSTALLED) {
+        $application = app('Anomaly\Streams\Platform\Application\Application');
+
+        if (app('request')->segment(1) !== 'installer' && !$application->isInstalled()) {
 
             app('router')->any(
                 '{all}',
