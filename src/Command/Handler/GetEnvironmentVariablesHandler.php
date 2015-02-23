@@ -22,6 +22,7 @@ class GetEnvironmentVariablesHandler
 
     /**
      * @param GetEnvironmentVariables $command
+     *
      * @return array
      */
     public function handle(GetEnvironmentVariables $command)
@@ -31,6 +32,7 @@ class GetEnvironmentVariablesHandler
         $distribution = $this->distributions->active();
 
         $variables = [
+            'APP_DEBUG'      => 'false',
             'APP_KEY'        => str_random(32),
             'DB_DRIVER'      => $parameters['database_driver'],
             'DB_HOST'        => $parameters['database_host'],
@@ -56,11 +58,11 @@ class GetEnvironmentVariablesHandler
     protected function setDatabaseConfig(array $variables)
     {
         config()->set("database.connections.{$variables['DB_DRIVER']}", [
-            'driver'   => $variables['DB_DRIVER'],
-            'host'     => $variables['DB_HOST'],
-            'database' => $variables['DB_DATABASE'],
-            'username' => $variables['DB_USERNAME'],
-            'password' => $variables['DB_PASSWORD'],
+            'driver'    => $variables['DB_DRIVER'],
+            'host'      => $variables['DB_HOST'],
+            'database'  => $variables['DB_DATABASE'],
+            'username'  => $variables['DB_USERNAME'],
+            'password'  => $variables['DB_PASSWORD'],
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
