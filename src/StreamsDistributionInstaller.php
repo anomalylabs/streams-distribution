@@ -7,9 +7,9 @@ use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTable;
 use Anomaly\Streams\Platform\Addon\Module\Command\SyncModules;
 use Anomaly\Streams\Platform\Application\Command\GenerateEnvironmentFile;
+use Anomaly\Streams\Platform\Entry\Command\AutoloadEntryModels;
 use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTables;
 use Anomaly\StreamsDistribution\Command\CreateFailedJobsTable;
-use Anomaly\StreamsDistribution\Command\GenerateDistributionFile;
 use Anomaly\StreamsDistribution\Command\GetEnvironmentVariables;
 use Anomaly\UsersModule\Role\RoleManager;
 use Anomaly\UsersModule\User\UserManager;
@@ -43,6 +43,8 @@ class StreamsDistributionInstaller
         $this->syncExtensions();
         $this->installAllModules();
         $this->installAllExtensions();
+
+        $this->dispatch(new AutoloadEntryModels());
 
         $this->installAdministrator($parameters);
 
