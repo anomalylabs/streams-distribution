@@ -45,6 +45,7 @@ class GetEnvironmentVariablesHandler
             'STANDARD_THEME' => $distribution->getStandardTheme(),
             'LOCALE'         => $parameters['application_locale'],
             'TIMEZONE'       => $parameters['application_timezone'],
+            'INSTALLED'      => 'true'
         ];
 
         $this->setDatabaseConfig($variables);
