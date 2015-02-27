@@ -24,32 +24,36 @@ class AnomalyDistributionStreamsCreateFieldsTables extends Migration
         /* @var Builder $schema */
         $schema = app('db')->connection()->getSchemaBuilder();
 
-        $schema->create(
-            'streams_fields',
-            function (Blueprint $table) {
+        if (!$schema->hasTable('streams_fields')) {
+            $schema->create(
+                'streams_fields',
+                function (Blueprint $table) {
 
-                $table->increments('id');
-                $table->string('namespace');
-                $table->string('slug');
-                $table->string('name');
-                $table->string('type');
-                $table->text('config');
-                $table->text('rules');
-                $table->boolean('locked')->default(0);
-            }
-        );
+                    $table->increments('id');
+                    $table->string('namespace');
+                    $table->string('slug');
+                    $table->string('name');
+                    $table->string('type');
+                    $table->text('config');
+                    $table->text('rules');
+                    $table->boolean('locked')->default(0);
+                }
+            );
+        }
 
-        $schema->create(
-            'streams_fields_translations',
-            function (Blueprint $table) {
+        if (!$schema->hasTable('streams_fields_translations')) {
+            $schema->create(
+                'streams_fields_translations',
+                function (Blueprint $table) {
 
-                $table->increments('id');
-                $table->integer('field_id');
-                $table->string('locale')->index();
+                    $table->increments('id');
+                    $table->integer('field_id');
+                    $table->string('locale')->index();
 
-                $table->string('name');
-            }
-        );
+                    $table->string('name');
+                }
+            );
+        }
     }
 
     /**

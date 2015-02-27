@@ -24,34 +24,38 @@ class AnomalyDistributionStreamsCreateAssignmentsTables extends Migration
         /* @var Builder $schema */
         $schema = app('db')->connection()->getSchemaBuilder();
 
-        $schema->create(
-            'streams_assignments',
-            function (Blueprint $table) {
+        if (!$schema->hasTable('streams_assignments')) {
+            $schema->create(
+                'streams_assignments',
+                function (Blueprint $table) {
 
-                $table->increments('id');
-                $table->integer('sort_order');
-                $table->integer('stream_id');
-                $table->integer('field_id');
-                $table->string('label')->nullable();
-                $table->text('instructions')->nullable();
-                $table->boolean('unique')->default(0);
-                $table->boolean('required')->default(0);
-                $table->boolean('translatable')->default(0);
-            }
-        );
+                    $table->increments('id');
+                    $table->integer('sort_order');
+                    $table->integer('stream_id');
+                    $table->integer('field_id');
+                    $table->string('label')->nullable();
+                    $table->text('instructions')->nullable();
+                    $table->boolean('unique')->default(0);
+                    $table->boolean('required')->default(0);
+                    $table->boolean('translatable')->default(0);
+                }
+            );
+        }
 
-        $schema->create(
-            'streams_assignments_translations',
-            function (Blueprint $table) {
+        if (!$schema->hasTable('streams_assignments_translations')) {
+            $schema->create(
+                'streams_assignments_translations',
+                function (Blueprint $table) {
 
-                $table->increments('id');
-                $table->integer('assignment_id');
-                $table->string('locale')->index();
+                    $table->increments('id');
+                    $table->integer('assignment_id');
+                    $table->string('locale')->index();
 
-                $table->string('label')->nullable();
-                $table->text('instructions')->nullable();
-            }
-        );
+                    $table->string('label')->nullable();
+                    $table->text('instructions')->nullable();
+                }
+            );
+        }
     }
 
     /**
