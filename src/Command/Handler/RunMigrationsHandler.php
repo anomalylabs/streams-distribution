@@ -35,8 +35,8 @@ class RunMigrationsHandler
      */
     public function handle()
     {
-        $this->command->call('migrate', ['--force' => true, '--addon' => 'anomaly.distribution.streams']);
-        $this->command->call('migrate', ['--force' => true, '--addon' => 'anomaly.module.addons']);
         $this->command->call('migrate', ['--force' => true, '--no-addons' => true]);
+        $this->command->call('migrate', ['--force' => true, '--addon' => 'anomaly.module.addons']);
+        $this->command->call('migrate', ['--force' => true, '--addon' => 'anomaly.distribution.streams']);
     }
 }

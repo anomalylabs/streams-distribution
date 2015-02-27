@@ -68,6 +68,18 @@ class GetEnvironmentVariablesHandler
             'prefix'    => '',
             'strict'    => false,
         ]);
+
+        config()->set("database.connections.core", [
+            'driver'    => $variables['DB_DRIVER'],
+            'host'      => $variables['DB_HOST'],
+            'database'  => $variables['DB_DATABASE'],
+            'username'  => $variables['DB_USERNAME'],
+            'password'  => $variables['DB_PASSWORD'],
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+        ]);
     }
 
 }
