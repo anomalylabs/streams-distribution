@@ -1,6 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution\Command\Handler;
 
-use Illuminate\Foundation\Console\Kernel;
+use App\Console\Kernel;
 
 /**
  * Class RunMigrationsHandler
@@ -35,6 +35,7 @@ class RunMigrationsHandler
      */
     public function handle()
     {
-        $this->command->call('migrate', ['--no-addons']);
+        $this->command->call('migrate', ['--force' => true, '--addon' => 'anomaly.distribution.streams']);
+        $this->command->call('migrate', ['--force' => true, '--no-addons' => true]);
     }
 }

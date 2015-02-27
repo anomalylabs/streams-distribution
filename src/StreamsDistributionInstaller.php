@@ -4,6 +4,7 @@ use Anomaly\Streams\Platform\Addon\Extension\Command\InstallAllExtensions;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
 use Anomaly\Streams\Platform\Application\Command\GenerateEnvironmentFile;
 use Anomaly\Streams\Platform\Entry\Command\AutoloadEntryModels;
+use Anomaly\Streams\Platform\Stream\Command\CreateStreamsTables;
 use Anomaly\StreamsDistribution\Command\GetEnvironmentVariables;
 use Anomaly\StreamsDistribution\Command\RunMigrations;
 use Anomaly\StreamsDistribution\Command\SetupApplication;

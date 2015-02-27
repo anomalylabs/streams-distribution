@@ -47,6 +47,6 @@ class SetupApplicationHandler
         $this->application->setReference($reference);
 
         // Setup the application.
-        $this->application->setup($reference);
+        $this->application->setup();
     }
 }
