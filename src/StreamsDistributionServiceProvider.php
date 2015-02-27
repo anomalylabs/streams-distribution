@@ -52,6 +52,6 @@ class StreamsDistributionServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        $this->app->register('Anomaly\StreamsDistribution\Provider\RouteServiceProvider');
+        $this->app->register('Anomaly\StreamsDistribution\StreamsDistributionRouteProvider');
     }
 }

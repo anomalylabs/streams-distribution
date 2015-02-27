@@ -1,4 +1,4 @@
-<?php namespace Anomaly\StreamsDistribution\Addon\FieldType;
+<?php namespace Anomaly\StreamsDistribution\FieldType;
 
 use Anomaly\CheckboxesFieldType\CheckboxesFieldType;
 

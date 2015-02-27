@@ -28,7 +28,7 @@ class InstallerFormFields
                 'license'               => [
                     'label'        => 'anomaly.distribution.streams::field.license.label',
                     'instructions' => 'anomaly.distribution.streams::field.license.instructions',
-                    'type'         => 'Anomaly\StreamsDistribution\Addon\FieldType\LicenseCheckboxesFieldType',
+                    'type'         => 'Anomaly\StreamsDistribution\FieldType\LicenseCheckboxesFieldType',
                     'rules'        => [
                         'required',
                     ],

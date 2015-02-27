@@ -1,125 +1,78 @@
 <?php namespace Anomaly\StreamsDistribution;
 
 use Anomaly\Streams\Platform\Addon\Extension\Command\InstallAllExtensions;
-use Anomaly\Streams\Platform\Addon\Extension\Command\InstallExtensionsTable;
-use Anomaly\Streams\Platform\Addon\Extension\Command\SyncExtensions;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
-use Anomaly\Streams\Platform\Addon\Module\Command\InstallModulesTable;
-use Anomaly\Streams\Platform\Addon\Module\Command\SyncModules;
 use Anomaly\Streams\Platform\Application\Command\GenerateEnvironmentFile;
 use Anomaly\Streams\Platform\Entry\Command\AutoloadEntryModels;
-use Anomaly\Streams\Platform\Stream\Command\InstallStreamsTables;
-use Anomaly\StreamsDistribution\Command\CreateFailedJobsTable;
 use Anomaly\StreamsDistribution\Command\GetEnvironmentVariables;
+use Anomaly\StreamsDistribution\Command\RunMigrations;
+use Anomaly\StreamsDistribution\Command\SetupApplication;
 use Anomaly\UsersModule\Role\RoleManager;
 use Anomaly\UsersModule\User\UserManager;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
+/**
+ * Class StreamsDistributionInstaller
+ *
+ * @link          http://anomaly.is/streams-platform
+ * @author        AnomalyLabs, Inc. <hello@anomaly.is>
+ * @author        Ryan Thompson <ryan@anomaly.is>
+ * @package       Anomaly\StreamsDistribution
+ */
 class StreamsDistributionInstaller
 {
 
     use DispatchesCommands;
 
+    /**
+     * The role manager.
+     *
+     * @var RoleManager
+     */
     protected $roles;
 
+    /**
+     * The user manager.
+     *
+     * @var UserManager
+     */
     protected $users;
 
+    /**
+     * Create a new StreamsDistributionInstaller instance.
+     *
+     * @param RoleManager $roles
+     * @param UserManager $users
+     */
     function __construct(RoleManager $roles, UserManager $users)
     {
         $this->roles = $roles;
         $this->users = $users;
     }
 
+    /**
+     * Install the system.
+     *
+     * @param array $parameters
+     * @return bool
+     */
     public function install(array $parameters)
     {
-        $this->generateEnvironmentFile($parameters);
+        $this->dispatch(new GenerateEnvironmentFile($this->dispatch(new GetEnvironmentVariables($parameters))));
 
-        $this->installApplicationTables($parameters);
-        $this->installFailedJobsTable();
-        $this->installExtensionsTable();
-        $this->installStreamsTables();
-        $this->installModulesTable();
-        $this->syncModules();
-        $this->syncExtensions();
-        $this->installAllModules();
-        $this->installAllExtensions();
-
+        $this->dispatch(new SetupApplication($parameters));
+        $this->dispatch(new RunMigrations());
+        $this->dispatch(new InstallAllModules());
+        $this->dispatch(new InstallAllExtensions());
         $this->dispatch(new AutoloadEntryModels());
 
-        $this->installAdministrator($parameters);
-
-        return true;
-    }
-
-    /**
-     * @param array $parameters
-     */
-    protected function generateEnvironmentFile(array $parameters)
-    {
-        $variables = $this->dispatch(new GetEnvironmentVariables($parameters));
-        $this->dispatch(new GenerateEnvironmentFile($variables));
-    }
-
-    protected function installApplicationTables(array $parameters)
-    {
-        $data = [
-            'name'      => $parameters['application_name'],
-            'domain'    => $parameters['application_domain'],
-            'reference' => $parameters['application_reference'],
-        ];
-
-        $this->dispatchFromArray('Anomaly\StreamsDistribution\Command\CreateApplicationTables', $data);
-    }
-
-    protected function installFailedJobsTable()
-    {
-        $this->dispatch(new CreateFailedJobsTable());
-    }
-
-    protected function installStreamsTables()
-    {
-        $this->dispatch(new InstallStreamsTables());
-    }
-
-    protected function installModulesTable()
-    {
-        $this->dispatch(new InstallModulesTable());
-    }
-
-    protected function installExtensionsTable()
-    {
-        $this->dispatch(new InstallExtensionsTable());
-    }
-
-    protected function syncModules()
-    {
-        $this->dispatch(new SyncModules());
-    }
-
-    protected function installAllModules()
-    {
-        $this->dispatch(new InstallAllModules());
-    }
-
-    protected function syncExtensions()
-    {
-        $this->dispatch(new SyncExtensions());
-    }
-
-    protected function installAllExtensions()
-    {
-        $this->dispatch(new InstallAllExtensions());
-    }
-
-    protected function installAdministrator(array $parameters)
-    {
         $credentials = [
             'email'    => $parameters['admin_email'],
             'username' => $parameters['admin_username'],
             'password' => $parameters['admin_password']
         ];
 
-        $user = $this->users->create($credentials, true);
+        $user  = $this->users->create($credentials, true);
         $admin = $this->roles->create(
             [
                 'name' => 'Administrator',
@@ -130,6 +83,7 @@ class StreamsDistributionInstaller
         $this->roles->create(['name' => 'User', 'slug' => 'user']);
 
         $this->users->attachRole($user, $admin);
+
+        return true;
     }
 }
- 
