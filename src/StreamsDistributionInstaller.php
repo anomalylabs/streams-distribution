@@ -104,14 +104,14 @@ class StreamsDistributionInstaller
 
         $this->users->attachRole($user, $admin);
 
-        $this->applications->create(
-            [
-                'name'      => array_get($parameters, 'application_name'),
-                'domain'    => array_get($parameters, 'application_domain'),
-                'reference' => array_get($parameters, 'application_reference'),
-                'enabled'   => true
-            ]
-        );
+        $application = $this->applications->newInstance();
+
+        $application->enabled   = true;
+        $application->name      = array_get($parameters, 'application_name');
+        $application->domain    = array_get($parameters, 'application_domain');
+        $application->reference = array_get($parameters, 'application_reference');
+
+        $application->save();
 
         return true;
     }
