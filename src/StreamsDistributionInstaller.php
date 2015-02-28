@@ -76,12 +76,21 @@ class StreamsDistributionInstaller
         $user  = $this->users->create($credentials, true);
         $admin = $this->roles->create(
             [
-                'name' => 'Administrator',
+                'en'   => [
+                    'name' => 'Administrator'
+                ],
                 'slug' => 'admin'
             ]
         );
 
-        $this->roles->create(['name' => 'User', 'slug' => 'user']);
+        $this->roles->create(
+            [
+                'en'   => [
+                    'name' => 'User',
+                ],
+                'slug' => 'user'
+            ]
+        );
 
         $this->users->attachRole($user, $admin);
 
