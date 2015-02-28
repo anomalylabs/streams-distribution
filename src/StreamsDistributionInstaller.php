@@ -2,6 +2,7 @@
 
 use Anomaly\Streams\Platform\Addon\Extension\Command\InstallAllExtensions;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
+use Anomaly\Streams\Platform\Application\ApplicationModel;
 use Anomaly\Streams\Platform\Application\Command\GenerateEnvironmentFile;
 use Anomaly\Streams\Platform\Entry\Command\AutoloadEntryModels;
 use Anomaly\Streams\Platform\Stream\Command\CreateStreamsTables;
@@ -40,15 +41,24 @@ class StreamsDistributionInstaller
     protected $users;
 
     /**
+     * The application model.
+     *
+     * @var ApplicationModel
+     */
+    protected $applications;
+
+    /**
      * Create a new StreamsDistributionInstaller instance.
      *
-     * @param RoleManager $roles
-     * @param UserManager $users
+     * @param RoleManager      $roles
+     * @param UserManager      $users
+     * @param ApplicationModel $applications
      */
-    function __construct(RoleManager $roles, UserManager $users)
+    function __construct(RoleManager $roles, UserManager $users, ApplicationModel $applications)
     {
-        $this->roles = $roles;
-        $this->users = $users;
+        $this->roles        = $roles;
+        $this->users        = $users;
+        $this->applications = $applications;
     }
 
     /**
@@ -93,6 +103,15 @@ class StreamsDistributionInstaller
         );
 
         $this->users->attachRole($user, $admin);
+
+        $this->applications->create(
+            [
+                'name'      => array_get($parameters, 'application_name'),
+                'domain'    => array_get($parameters, 'application_domain'),
+                'reference' => array_get($parameters, 'application_reference'),
+                'enabled'   => true
+            ]
+        );
 
         return true;
     }
