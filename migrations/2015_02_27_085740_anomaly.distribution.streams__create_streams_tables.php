@@ -38,7 +38,6 @@ class AnomalyDistributionStreamsCreateStreamsTables extends Migration
                     $table->string('order_by');
                     $table->string('locked')->default(0);
                     $table->string('translatable')->default(0);
-                    $table->string('revisionable')->default(0);
                 }
             );
         }
