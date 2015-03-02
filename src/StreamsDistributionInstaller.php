@@ -73,8 +73,8 @@ class StreamsDistributionInstaller
 
         $this->dispatch(new SetupApplication($parameters));
         $this->dispatch(new RunMigrations());
-        $this->dispatch(new InstallAllModules());
-        $this->dispatch(new InstallAllExtensions());
+        $this->dispatch(new InstallAllModules(true));
+        $this->dispatch(new InstallAllExtensions(true));
         $this->dispatch(new AutoloadEntryModels());
 
         $credentials = [
