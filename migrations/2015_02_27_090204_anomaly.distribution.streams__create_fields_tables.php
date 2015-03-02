@@ -32,7 +32,6 @@ class AnomalyDistributionStreamsCreateFieldsTables extends Migration
                     $table->increments('id');
                     $table->string('namespace');
                     $table->string('slug');
-                    $table->string('name');
                     $table->string('type');
                     $table->text('config');
                     $table->text('rules');

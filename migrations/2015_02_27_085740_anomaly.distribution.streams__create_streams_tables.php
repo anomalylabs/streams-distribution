@@ -33,8 +33,6 @@ class AnomalyDistributionStreamsCreateStreamsTables extends Migration
                     $table->string('namespace');
                     $table->string('slug');
                     $table->string('prefix')->nullable();
-                    $table->string('name');
-                    $table->string('description')->nullable();
                     $table->text('view_options');
                     $table->string('title_column');
                     $table->string('order_by');

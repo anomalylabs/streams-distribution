@@ -33,8 +33,6 @@ class AnomalyDistributionStreamsCreateAssignmentsTables extends Migration
                     $table->integer('sort_order');
                     $table->integer('stream_id');
                     $table->integer('field_id');
-                    $table->string('label')->nullable();
-                    $table->text('instructions')->nullable();
                     $table->boolean('unique')->default(0);
                     $table->boolean('required')->default(0);
                     $table->boolean('translatable')->default(0);
@@ -52,6 +50,7 @@ class AnomalyDistributionStreamsCreateAssignmentsTables extends Migration
                     $table->string('locale')->index();
 
                     $table->string('label')->nullable();
+                    $table->string('placeholder')->nullable();
                     $table->text('instructions')->nullable();
                 }
             );

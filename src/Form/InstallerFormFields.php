@@ -47,7 +47,7 @@ class InstallerFormFields
                 'database_driver'       => [
                     'label'        => 'anomaly.distribution.streams::field.database_driver.label',
                     'instructions' => 'anomaly.distribution.streams::field.database_driver.instructions',
-                    'type'         => 'select',
+                    'type'         => 'anomaly.field_type.select',
                     'value'        => 'mysql',
                     'rules'        => [
                         'required',
@@ -72,7 +72,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.database_host.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.database_host.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.database_host.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'value'        => 'localhost',
                     'rules'        => [
                         'required',
@@ -82,7 +82,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.database_name.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.database_name.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.database_name.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'value'        => function (DistributionCollection $distributions) {
                         return $distributions->active()->getSlug();
                     },
@@ -94,7 +94,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.database_username.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.database_username.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.database_username.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'value'        => 'root',
                     'rules'        => [
                         'required',
@@ -104,7 +104,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.database_password.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.database_password.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.database_password.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'config'       => [
                         'type' => 'password',
                     ],
@@ -116,7 +116,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.admin_username.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.admin_username.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.admin_username.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'value'        => 'admin',
                     'rules'        => [
                         'required',
@@ -126,7 +126,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.admin_email.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.admin_email.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.admin_email.instructions',
-                    'type'         => 'email',
+                    'type'         => 'anomaly.field_type.email',
                     'rules'        => [
                         'required',
                     ],
@@ -135,7 +135,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.admin_password.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.admin_password.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.admin_password.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'rules'        => [
                         'required',
                     ],
@@ -150,7 +150,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.application_name.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.application_name.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.application_name.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'value'        => 'Default',
                     'rules'        => [
                         'required',
@@ -160,7 +160,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.application_reference.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.application_reference.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.application_reference.instructions',
-                    'type'         => 'slug',
+                    'type'         => 'anomaly.field_type.slug',
                     'value'        => 'default',
                     'rules'        => [
                         'required',
@@ -170,7 +170,7 @@ class InstallerFormFields
                     'label'        => 'anomaly.distribution.streams::field.application_domain.label',
                     'placeholder'  => 'anomaly.distribution.streams::field.application_domain.placeholder',
                     'instructions' => 'anomaly.distribution.streams::field.application_domain.instructions',
-                    'type'         => 'text',
+                    'type'         => 'anomaly.field_type.text',
                     'value'        => str_replace(['http://', 'https://'], '', app('request')->root()),
                     'rules'        => [
                         'required',
@@ -179,7 +179,7 @@ class InstallerFormFields
                 'application_locale'    => [
                     'label'        => 'anomaly.distribution.streams::field.application_locale.label',
                     'instructions' => 'anomaly.distribution.streams::field.application_locale.instructions',
-                    'type'         => 'select',
+                    'type'         => 'anomaly.field_type.select',
                     'value'        => 'en',
                     'rules'        => [
                         'required',
@@ -201,7 +201,7 @@ class InstallerFormFields
                 'application_timezone'  => [
                     'label'        => 'anomaly.distribution.streams::field.application_timezone.label',
                     'instructions' => 'anomaly.distribution.streams::field.application_timezone.instructions',
-                    'type'         => 'select',
+                    'type'         => 'anomaly.field_type.select',
                     'value'        => 'UTC',
                     'rules'        => [
                         'required',
