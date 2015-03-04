@@ -6,7 +6,7 @@
 <body id="welcome">
 
 <a href="http://anomaly.is/streams-platform">
-    {{ image('theme::img/logo.png').width(128) }}
+    {{ image('theme::img/logo.png').width(128)|raw }}
 </a>
 
 <h1>{{ trans(distribution().getName()) }} is ready.</h1>
