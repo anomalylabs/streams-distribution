@@ -32,20 +32,28 @@ class GetEnvironmentVariablesHandler
         $distribution = $this->distributions->active();
 
         $variables = [
-            'APP_DEBUG'      => 'false',
-            'APP_KEY'        => str_random(32),
-            'DB_DRIVER'      => $parameters['database_driver'],
-            'DB_HOST'        => $parameters['database_host'],
-            'DB_DATABASE'    => $parameters['database_name'],
-            'DB_USERNAME'    => $parameters['database_username'],
-            'DB_PASSWORD'    => $parameters['database_password'],
-            'CACHE_DRIVER'   => 'file', // @todo - add fields for this?
-            'SESSION_DRIVER' => 'file', // @todo - add fields for this?
-            'ADMIN_THEME'    => $distribution->getAdminTheme(),
-            'STANDARD_THEME' => $distribution->getStandardTheme(),
-            'LOCALE'         => $parameters['application_locale'],
-            'TIMEZONE'       => $parameters['application_timezone'],
-            'INSTALLED'      => 'true'
+            'INSTALLED'         => 'true',
+            'APP_DEBUG'         => 'false',
+            'APP_KEY'           => str_random(32),
+            'DB_DRIVER'         => $parameters['database_driver'],
+            'DB_HOST'           => $parameters['database_host'],
+            'DB_DATABASE'       => $parameters['database_name'],
+            'DB_USERNAME'       => $parameters['database_username'],
+            'DB_PASSWORD'       => $parameters['database_password'],
+            'CACHE_DRIVER'      => 'file', // @todo - add fields for this?
+            'SESSION_DRIVER'    => 'file', // @todo - add fields for this?
+            'ADMIN_THEME'       => $distribution->getAdminTheme(),
+            'STANDARD_THEME'    => $distribution->getStandardTheme(),
+            'LOCALE'            => $parameters['application_locale'],
+            'TIMEZONE'          => $parameters['application_timezone'],
+            'MAIL_DRIVER'       => 'smtp',
+            'MAIL_HOST'         => 'smtp.mailgun.org',
+            'SMTP_PORT'         => 587,
+            'MAIL_FROM_ADDRESS' => null,
+            'MAIL_FROM_NAME'    => null,
+            'SMTP_USERNAME'     => null,
+            'SMTP_PASSWORD'     => null,
+            'MAIL_DEBUG'        => false
         ];
 
         $this->setDatabaseConfig($variables);
