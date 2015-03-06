@@ -186,15 +186,7 @@ class InstallerFormFields
                     ],
                     'config'       => [
                         'options' => function () {
-
-                            $options = [];
-
-                            foreach (config('streams.available_locales') as $locale) {
-
-                                $options[$locale] = trans('streams::language.' . $locale);
-                            }
-
-                            return $options;
+                            return config('streams.available_locales');
                         }
                     ],
                 ],
