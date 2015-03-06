@@ -47,7 +47,7 @@ class GetEnvironmentVariablesHandler
             'LOCALE'            => $parameters['application_locale'],
             'TIMEZONE'          => $parameters['application_timezone'],
             'MAIL_DRIVER'       => 'smtp',
-            'MAIL_HOST'         => 'smtp.mailgun.org',
+            'SMTP_HOST'         => 'smtp.mailgun.org',
             'SMTP_PORT'         => 587,
             'MAIL_FROM_ADDRESS' => null,
             'MAIL_FROM_NAME'    => null,
