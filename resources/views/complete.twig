@@ -5,13 +5,18 @@
 </head>
 <body id="welcome">
 
-<a href="http://anomaly.is/streams-platform">
-    {{ image('theme::img/logo.png').width(128)|raw }}
-</a>
+<div class="ui page grid">
+    <div class="column center aligned">
 
-<h1>{{ trans(distribution().getName()) }} is ready.</h1>
+        <h1 class="ui header logo center aligned">
+            {{ image("theme::img/icon-dark.png").width(64)|raw }}
+            <br>
+            {{ trans(distribution().getName()) }} is ready.
+        </h1>
 
-{{ html_link('admin/login', trans('anomaly.distribution.streams::button.login'), {'class': 'btn btn-success'}) }}
+        {{ html_link('admin/login', trans('anomaly.distribution.streams::button.login'), {'class': 'ui button green'}) }}
+    </div>
+</div>
 
 </body>
 </html>

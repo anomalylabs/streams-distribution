@@ -22,8 +22,12 @@ class InstallerFormBuilder extends FormBuilder
      */
     protected $actions = [
         'save' => [
-            'type' => 'success',
-            'text' => 'anomaly.distribution.streams::button.install',
+            'type'       => 'green',
+            'text'       => 'anomaly.distribution.streams::button.install',
+            'attributes' => [
+                'data-toggle' => 'dimmer',
+                'data-target' => '.installer.dimmer'
+            ]
         ]
     ];
 
