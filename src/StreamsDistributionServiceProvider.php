@@ -14,44 +14,13 @@ class StreamsDistributionServiceProvider extends AddonServiceProvider
 {
 
     /**
-     * Register the service.
-     */
-    public function register()
-    {
-        $this->checkInstallation();
-        $this->registerRoutes();
-    }
-
-    /**
-     * If we're not in the installer and the distribution
-     * file is not present than Streams is considered to
-     * be NOT installed.
+     * The addon routes.
      *
-     * In the case that Streams is not installed route
-     * EVERYTHING to the installer.
+     * @var array
      */
-    protected function checkInstallation()
-    {
-        $application = app('Anomaly\Streams\Platform\Application\Application');
+    protected $routes = [
+        'installer'          => 'Anomaly\StreamsDistribution\Http\Controller\InstallerController@index',
+        'installer/complete' => 'Anomaly\StreamsDistribution\Http\Controller\InstallerController@complete'
+    ];
 
-        if (app('request')->segment(1) !== 'installer' && !$application->isInstalled()) {
-
-            app('router')->any(
-                '{all}',
-                function () {
-                    return redirect(url('installer'));
-                }
-            )->where('all', '.*');
-
-            return;
-        }
-    }
-
-    /**
-     * Register distribution routes.
-     */
-    protected function registerRoutes()
-    {
-        $this->app->register('Anomaly\StreamsDistribution\StreamsDistributionRouteProvider');
-    }
 }
