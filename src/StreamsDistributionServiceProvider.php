@@ -1,6 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution;
 
-use Illuminate\Support\ServiceProvider;
+use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 
 /**
  * Class StreamsDistributionServiceProvider
@@ -10,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
  * @author        Ryan Thompson <ryan@anomaly.is>
  * @package       Anomaly\StreamsDistribution
  */
-class StreamsDistributionServiceProvider extends ServiceProvider
+class StreamsDistributionServiceProvider extends AddonServiceProvider
 {
 
     /**
