@@ -1,5 +1,6 @@
 <?php namespace Anomaly\StreamsDistribution;
 
+use Anomaly\Streams\Platform\Addon\Command\RegisterAddons;
 use Anomaly\Streams\Platform\Addon\Extension\Command\InstallAllExtensions;
 use Anomaly\Streams\Platform\Addon\Module\Command\InstallAllModules;
 use Anomaly\Streams\Platform\Application\ApplicationModel;
@@ -76,6 +77,7 @@ class StreamsDistributionInstaller
         $this->dispatch(new InstallAllModules(true));
         $this->dispatch(new InstallAllExtensions(true));
         $this->dispatch(new AutoloadEntryModels());
+        $this->dispatch(new RegisterAddons());
 
         $credentials = [
             'email'    => $parameters['admin_email'],
