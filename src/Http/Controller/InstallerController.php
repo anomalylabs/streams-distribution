@@ -21,12 +21,8 @@ class InstallerController extends PublicController
      * @param InstallerFormBuilder $form
      * @return \Illuminate\View\View|\Symfony\Component\HttpFoundation\Response
      */
-    public function index(InstallerFormBuilder $form, Application $application)
+    public function index(InstallerFormBuilder $form)
     {
-        if ($application->isInstalled()) {
-            throw new \Exception("Please delete the .env file before installing.");
-        }
-
         return $form->render();
     }
 
